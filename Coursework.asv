@@ -3,19 +3,20 @@ clc
 close all
 
 %% Inputs to the code
-P_1 = % Freestream pressure
-T_1 = % Freestream temperature
-M_1 = % Flight Mach number
-M_N = % Normal shock strength
-M_b = % Burner entry Mach number
-T_b = % Burner temperature
-P_2 = % Pressure just before burner entrance
-P_b = % Burner pressure
+P_1 = 101325% Freestream pressure
+T_1 = 288.15% Freestream temperature
+M_1 = 3% Flight Mach number
+M_N = 1.1% Normal shock strength
+M_b = 400% Burner entry Mach number
+T_b = 1200% Burner temperature
+P_2 = 150000% Pressure just before burner entrance
+P_b = 100000    % Burner pressure
 % Burner pressure ratio (P_b / P_2)
-P_4 = % Exhaust pressure
+
+P_4 = 101325% Exhaust pressure
 % Exhaust pressure ratio (P_4 / P_1)
 
-% Required thrust
+Thrust = % Required thrust
 
 % Outputs to code:
 % Inlet area
@@ -26,3 +27,5 @@ P_4 = % Exhaust pressure
 % Exhaust area
 % Thermodynamic efficiency
 % Propulsive efficiency
+
+%%
