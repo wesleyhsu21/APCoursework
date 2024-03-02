@@ -7,14 +7,14 @@ P_1 = 70000;   % Freestream pressure                   [Pa]
 T_1 = 210;   % Freestream temperature                [K]
 M_1 = 2.8;        % Flight Mach number                    []
 M_N = 1.1;      % Normal shock strength                 []
-M_b = 0.42;      % Burner entry Mach number              []
+M_b = 0.42;      % Burner entry Mach number              []         % ASSIGNED SOMEWHERE ELSE??
 T_b = 1700;     % Burner temperature                    [K]
 P_2 = 150000;   % Pressure just before burner entrance  [Pa]
 P_b = P_2;   % Burner pressure                       [Pa]
 % Burner pressure ratio (P_b / P_2)
 Pb_over_P2 = P_b / P_2; %SHOULD THIS BE 1??
 
-P_4 = 101325;   % Exhaust pressure                      [Pa]
+P_4 = P_1;   % Exhaust pressure                      [Pa]       % CHECK
 % Exhaust pressure ratio (P_4 / P_1)
 P4_over_P1 = P_4 / P_1;
 
@@ -49,6 +49,8 @@ A1_over_AC1 = A1_over_A1star;
 AC1_over_A1 = 1 / A1_over_AC1;
 
 % Station x - Just before shock
+M_x = M_N;
+
 [M_y,Ty_over_Tx,Py_over_Px,rhoy_over_rhox] = normalShockRelations(M_N,gamma);
 
 T0x_over_Tx = M2T0ratio(M_N,gamma);
@@ -56,12 +58,16 @@ T0x_over_Tx = M2T0ratio(M_N,gamma);
 As_over_AC1 = M2arearatio(M_N,gamma);
 % note T0x = T01, Ax = Ay = Ashock
 
+P0x_over_Px = M2P0ratio(M_x,gamma);
+
 % Station y - Just after shock
 As_over_Aystar = M2arearatio(M_y,gamma);
 
 T0y_over_ty = M2T0ratio(M_y,gamma);
 
 T02_over_Ty = T0y_over_ty;
+
+P0y_over_Py = M2P0ratio(M_y,gamma);
 
 % Station 2 - Beginning of burner
 A2_over_A2star = M2arearatio(M_2,gamma);
@@ -76,12 +82,37 @@ T2_over_T1 = (1 / T0y_over_T2) * T0y_over_ty * Ty_over_Tx * (1 / T0x_over_Tx) * 
 
 T_2 = T2_over_T1 * T_1;
 
+P02_over_P2 = M2P0ratio(M_2,gamma);
+
 % Station b - End of burner (burn complete)
+[M_b,~] = RaleighBurner(T_2,T_b,M_2,gamma);
+% Needs to be subsonic or flow will choke, one other constraint, see eq
+% May need another plot, slide 40 Lecture 3.
+
+Ab_over_A2 = AbA2ratio(P_b,P_2,gamma,M_2,M_b);
+
+Ab_over_A1 = Ab_over_A2 * A2_over_A1;
 
 % Station C2 - Nozzle throat
+P0b_over_Pb = M2P0ratio(M_b,gamma);
+P0b_over_P2 = P0b_over_Pb;
 
-% Station 2 - Engine exhaust
+T0b_over_Tb = M2T0ratio(M_b,gamma);
 
+Ab_over_Abstar = M2arearatio(M_b,gamma);
+Ab_over_AC2 = Ab_over_Abstar;
+
+AC2_over_A1 = (1 / Ab_over_AC2) * Ab_over_A1;
+
+% Station 4 - Engine exhaust
+% CHECK THESE
+P04_over_P0b = 1;
+P02_over_P0y = 1;
+P0x_over_P01 = 1;
+
+P04_over_P4 = P04_over_P0b * P0b_over_Pb * Pb_over_P2 * (1 / P02_over_P2) ...
+    * P02_over_P0y * P0y_over_Py * Py_over_Px * (1 / P0x_over_Px)...
+    * P0x_over_P01 * P01_over_P1 * (1 / P4_over_P1);
 
 %% Plotting
 

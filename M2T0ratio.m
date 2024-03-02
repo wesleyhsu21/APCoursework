@@ -1,7 +1,7 @@
 function T0_over_T = M2T0ratio(M,gamma)
-% function to calculate the ratio between stagnation temperature and static
+% Function to calculate the ratio between stagnation temperature and static
 % temperature using isentropic flow relations
-
+%
 % Inputs:
 % M         = Mach number
 % gamma     = Ratio of specific heats
