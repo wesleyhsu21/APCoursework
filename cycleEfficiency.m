@@ -13,6 +13,7 @@ function cycle_eff = cycleEfficiency(T_1,T_2,f_fa,epsilon,comp_eff,exp_eff,C_p)
 %
 % Outputs:
 % cycle eff =
+
 % fuel to air ratio f_fa and expansion and compression efficiencies
 % comp_eff exp_eff
 
