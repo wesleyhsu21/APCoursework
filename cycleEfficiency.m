@@ -1,4 +1,4 @@
-function cycle_eff = cycle_eff_func(T_1,T_2,f_fa,epsilon,comp_eff,exp_eff,C_p)
+function cycle_eff = cycleEfficiency(T_1,T_2,f_fa,epsilon,comp_eff,exp_eff,C_p)
 % Funtion to calculate the cycle efficiency using the compression
 % temperature ratio T1/T2
 %
