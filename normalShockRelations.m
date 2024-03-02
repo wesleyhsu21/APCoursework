@@ -23,6 +23,6 @@ function [M2, T2_T1, P2_P1, rho2_rho1] = normalShockRelations(M1, gamma)
     
     
     % Calculate density ratio (rho2/rho1)
-    rho2_rho1 = sqrt(1/T2_T1)* (M2/M1); 
+    rho2_rho1 = ((gamma + 1) * M1^2) / ((gamma - 1) * M1^2 + 2);
     
 end

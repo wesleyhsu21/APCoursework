@@ -1,4 +1,4 @@
-function [arearatio] = M2area(M,gamma)
+function [arearatio] = M2arearatio(M,gamma)
 % Function to calculate the area ratio given Mach number and ratio of
 % specific heats
 % Inputs:
