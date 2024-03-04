@@ -1,4 +1,4 @@
-function [M_high,M_low] = area2M(arearatio,gamma)
+function [M_high,M_low] = arearatio2M(arearatio,gamma)
 % Function to calculate the required Mach number given the area ratio and
 % ratio of specific heats
 % Inputs:
