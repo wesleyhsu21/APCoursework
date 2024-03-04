@@ -12,3 +12,4 @@ function rho0_over_rho = M2rho0ratio(M,gamma)
 rho0_over_rho = (1 + (((gamma - 1)/2) * (M^2)))^(1/(gamma-1));
 
 end
+% Checked
