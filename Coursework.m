@@ -137,14 +137,18 @@ F_over_P1A1 = gamma * M_1^2 * (M_4^2 / M_1^2 * A4_over_A1 - 1); % CHECK, APPROX
 % Inlet area
 
 % Inlet throat area
+A_C1 = AC1_over_A1 * A_1;
 
 % Burner entry area
+A_2 = A2_over_A1 * A_1;
 
 % Burner exit area
 
 % Nozzle throat area
+A_C2 = AC2_over_A1 * A_1;
 
 % Exhaust area
+A_4 = A4_over_A1 * A_1;
 
 % Thermodynamic efficiency
 
