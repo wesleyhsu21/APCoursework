@@ -41,7 +41,7 @@ AC1_over_A1 = 1 / A1_over_AC1;
 %% Station x - Just before shock
 M_x = M_N;
 
-[M_y,Ty_over_Tx,Py_over_Px,~] = normalShockRelations(M_N,gamma);
+[M_y,Ty_over_Tx,Py_over_Px,rhoy_over_rhox] = normalShockRelations(M_N,gamma);
 
 T0x_over_Tx = M2T0ratio(M_N,gamma);
 
