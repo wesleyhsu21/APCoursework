@@ -159,6 +159,7 @@ A_4 = A4_over_A1 * A_1;
 % Thermodynamic efficiency
 ThermoEff = cycleEfficiency(T_1,T_2,f_fa,epsilon,,,C_p);
 
+
 % Propulsive efficiency
 
 %% Plotting
@@ -173,13 +174,18 @@ P_2 = 150000;   % Pressure just before burner entrance  [Pa]
 P_b = P_2;      % Burner pressure                       [Pa]
 F = 20000;      % Required thrust                       [N]
 P_1 = linspace(0,110000,200);
-
-[eta_P1thermo,eta_P1prop] = mainRamjet(P_1,T_1,M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R);
+eta_P1thermo = zeros(1,200);
+eta_P1prop = zeros(1,200);
+eta_P1total = zeros(1,200);
+for i = 1:200
+    [eta_P1thermo(i),eta_P1prop(i),eta_P1total(i)] = mainRamjet(P_1(i),T_1,M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R);
+end
 VaryP1 = figure;
 hold on
-plot(P_1,eta_P1thermo)
 plot(P_1,eta_P1prop)
-
+plot(P_1,eta_P1thermo)
+plot(P_1,eta_P1total)
+legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$")
 hold off
 betterPlot(VaryP1)
 %% Varying T_1 (Freestream temperature)
