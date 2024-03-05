@@ -145,6 +145,10 @@ VaryMbprop = figure;
 
 betterPlot(VaryMbprop)
 %% Varying T_b (Burner temperature)
+
+%T_b range
+T_b_range = linspace(T_1,)
+
 % Varying thermodynamic efficiency
 VaryTbthermo = figure;
 
