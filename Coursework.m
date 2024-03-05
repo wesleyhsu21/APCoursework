@@ -155,7 +155,6 @@ A_4 = A4_over_A1 * A_1;
 % Propulsive efficiency
 
 %% Plotting
-
 %% Varying P_1 (Freestream pressure)
 % Varying thermodynamic efficiency
 
