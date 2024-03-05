@@ -157,21 +157,31 @@ A_C2 = AC2_over_A1 * A_1;
 A_4 = A4_over_A1 * A_1;
 
 % Thermodynamic efficiency
+ThermoEff = cycleEfficiency(T_1,T_2,f_fa,epsilon,,,C_p);
 
 % Propulsive efficiency
 
 %% Plotting
 %% Varying P_1 (Freestream pressure)
 % Varying thermodynamic efficiency
-VaryP1thermo = figure;
+T_1 = 210;      % Freestream temperature                [K]
+M_1 = 2.8;      % Flight Mach number                    []
+M_N = 1.1;      % Normal shock strength                 []
+M_b = 0.42;     % Burner entry Mach number              []         % ASSIGNED SOMEWHERE ELSE??
+T_b = 1700;     % Burner temperature                    [K]
+P_2 = 150000;   % Pressure just before burner entrance  [Pa]
+P_b = P_2;      % Burner pressure                       [Pa]
+F = 20000;      % Required thrust                       [N]
+P_1 = linspace(0,110000,200);
 
-betterPlot(VaryP1thermo)
-% Varying propulsive efficiency
-VaryP1prop = figure;
+[eta_P1thermo,eta_P1prop] = mainRamjet(P_1,T_1,M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R);
+VaryP1 = figure;
+hold on
+plot(P_1,eta_P1thermo)
+plot(P_1,eta_P1prop)
 
-betterPlot(VaryP1prop)
-
-
+hold off
+betterPlot(VaryP1)
 %% Varying T_1 (Freestream temperature)
 % Varying thermodynamic efficiency
 VaryT1thermo = figure;
