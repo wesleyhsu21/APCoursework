@@ -164,6 +164,7 @@ ThermoEff = cycleEfficiency(T_1,T_2,f_fa,epsilon,,,C_p);
 %% Plotting
 %% Varying P_1 (Freestream pressure)
 % Varying thermodynamic efficiency
+<<<<<<< Updated upstream
 T_1 = 210;      % Freestream temperature                [K]
 M_1 = 2.8;      % Flight Mach number                    []
 M_N = 1.1;      % Normal shock strength                 []
@@ -178,6 +179,10 @@ P_1 = linspace(0,110000,200);
 VaryP1thermo = figure;
 
 
+=======
+VaryP1thermo = figure;
+
+>>>>>>> Stashed changes
 betterPlot(VaryP1thermo)
 % Varying propulsive efficiency
 VaryP1prop = figure;
@@ -222,6 +227,7 @@ VaryMbprop = figure;
 
 betterPlot(VaryMbprop)
 %% Varying T_b (Burner temperature)
+<<<<<<< Updated upstream
 % Varying thermodynamic efficiency
 VaryTbthermo = figure;
 
@@ -256,4 +262,42 @@ betterPlot(VaryTthermo)
 % Varying propulsive efficiency
 VaryTprop = figure;
 
+=======
+% Varying thermodynamic efficiency
+VaryTbthermo = figure;
+
+betterPlot(VaryTbthermo)
+% Varying propulsive efficiency
+VaryTbprop = figure;
+
+betterPlot(VaryTbprop)
+%% Varying P_b/P_2 (Burner pressure ratio)
+% Varying thermodynamic efficiency
+VaryPbP2thermo = figure;
+
+betterPlot(VaryPbP2thermo)
+% Varying propulsive efficiency
+VaryPbP2prop = figure;
+
+betterPlot(VaryPbP2prop)
+%% Varying P_4/P_1 (Exhaust pressure ratio)
+% Varying thermodynamic efficiency
+VaryP4P1thermo = figure;
+
+betterPlot(VaryP4P1thermo)
+% Varying propulsive efficiency
+VaryP4P1prop = figure;
+
+betterPlot(VaryP4P1prop)
+%% Varying Thrust (Required Thrust)
+F = linspace(0,200)
+
+% Varying thermodynamic efficiency
+VaryTthermo = figure;
+
+betterPlot(VaryTthermo)
+% Varying propulsive efficiency
+VaryTprop = figure;
+
+>>>>>>> Stashed changes
 betterPlot(VaryTprop)
