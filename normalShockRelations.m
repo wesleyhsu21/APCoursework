@@ -25,3 +25,4 @@ T2_T1 = (1 + (gamma-1)/2 * M1^2) / (1 + (gamma-1)/2 * M2^2);
 rho2_rho1 = ((gamma + 1) * M1^2) / ((gamma - 1) * M1^2 + 2);
 
 end
+% Checked

@@ -24,4 +24,3 @@ function [] = betterPlot(figure)
     lgd.FontSize = 13;
     
 end
-
