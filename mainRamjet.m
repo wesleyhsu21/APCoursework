@@ -146,9 +146,9 @@ A_4 = A4_over_A1 * A_1;
 eta_prop = propEfficiency(gamma,R,M_1,M_4,A_1,A_4,T_1,T_4);
 
 % Thermodynamic efficiency
-compEff = compressorEff(P_1,P_2,gamma,T_1,T_2);
-expEff = expansionEff(T_b,T_4,P_1,P_2,gamma);
-eta_thermo = cycleEfficiency(T_1,T_2,f_fa,epsilon,compEff,expEff,C_p);
+comp_eff = compressorEff(P_1,P_2,gamma,T_1,T_2);
+exp_eff = expansionEff(T_b,T_4,P_1,P_2,gamma);
+eta_thermo = cycleEfficiency(T_1,T_2,f_fa,epsilon,comp_eff,exp_eff,C_p);
 
 % Total Efficiency
 eta_total = eta_thermo * eta_prop;
