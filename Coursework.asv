@@ -164,6 +164,7 @@ ThermoEff = cycleEfficiency(T_1,T_2,f_fa,epsilon,,,C_p);
 %% Plotting
 %% Varying P_1 (Freestream pressure)
 % Varying thermodynamic efficiency
+<<<<<<< Updated upstream
 T_1 = 210;      % Freestream temperature                [K]
 M_1 = 2.8;      % Flight Mach number                    []
 M_N = 1.1;      % Normal shock strength                 []
@@ -174,6 +175,23 @@ P_b = P_2;      % Burner pressure                       [Pa]
 F = 20000;      % Required thrust                       [N]
 P_1 = linspace(0,110000,200);
 
+<<<<<<< HEAD
+[eta_P1thermo,eta_P1prop] = mainRamjet(P_1,T_1,M_1,)
+VaryP1thermo = figure;
+
+
+=======
+VaryP1thermo = figure;
+
+>>>>>>> Stashed changes
+betterPlot(VaryP1thermo)
+% Varying propulsive efficiency
+VaryP1prop = figure;
+
+betterPlot(VaryP1prop)
+
+
+=======
 [eta_P1thermo,eta_P1prop,eta_P1total] = mainRamjet(P_1,T_1,M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R);
 VaryP1 = figure;
 hold on
@@ -183,6 +201,7 @@ plot(P_1,eta_P1total)
 legend("$")
 hold off
 betterPlot(VaryP1)
+>>>>>>> 284e9284221ce0a0dd2f7670707778367aefd0e6
 %% Varying T_1 (Freestream temperature)
 % Varying thermodynamic efficiency
 VaryT1thermo = figure;
@@ -229,6 +248,7 @@ VaryMbprop = figure;
 
 betterPlot(VaryMbprop)
 %% Varying T_b (Burner temperature)
+<<<<<<< Updated upstream
 % Varying thermodynamic efficiency
 VaryTbthermo = figure;
 
@@ -263,4 +283,42 @@ betterPlot(VaryTthermo)
 % Varying propulsive efficiency
 VaryTprop = figure;
 
+=======
+% Varying thermodynamic efficiency
+VaryTbthermo = figure;
+
+betterPlot(VaryTbthermo)
+% Varying propulsive efficiency
+VaryTbprop = figure;
+
+betterPlot(VaryTbprop)
+%% Varying P_b/P_2 (Burner pressure ratio)
+% Varying thermodynamic efficiency
+VaryPbP2thermo = figure;
+
+betterPlot(VaryPbP2thermo)
+% Varying propulsive efficiency
+VaryPbP2prop = figure;
+
+betterPlot(VaryPbP2prop)
+%% Varying P_4/P_1 (Exhaust pressure ratio)
+% Varying thermodynamic efficiency
+VaryP4P1thermo = figure;
+
+betterPlot(VaryP4P1thermo)
+% Varying propulsive efficiency
+VaryP4P1prop = figure;
+
+betterPlot(VaryP4P1prop)
+%% Varying Thrust (Required Thrust)
+F = linspace(0,200)
+
+% Varying thermodynamic efficiency
+VaryTthermo = figure;
+
+betterPlot(VaryTthermo)
+% Varying propulsive efficiency
+VaryTprop = figure;
+
+>>>>>>> Stashed changes
 betterPlot(VaryTprop)

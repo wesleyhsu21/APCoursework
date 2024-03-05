@@ -294,6 +294,10 @@ VaryP4P1prop = figure;
 
 betterPlot(VaryP4P1prop)
 %% Varying Thrust (Required Thrust)
+F = linspace(0,200e3,500); %thrust range for general ramjet engines
+
+
+
 % Varying thermodynamic efficiency
 VaryTthermo = figure;
 
