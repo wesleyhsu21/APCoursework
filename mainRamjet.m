@@ -1,4 +1,4 @@
-function [eta_prop,eta_thermo,eta_total,A_1,A_C1,A_2,A_b,A_C2,A_4] = mainRamjet(P_1,T_1,M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R,f_fa)
+function [eta_prop,eta_thermo,eta_total,A_1,A_C1,A_2,A_b,A_C2,A_4] = mainRamjet(P_1,T_1,M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R,f_fa,epsilon)
 % Function to calculate the main output parameters of a ramjet given
 % relevant input parameters
 %
