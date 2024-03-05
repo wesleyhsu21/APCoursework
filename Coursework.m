@@ -157,10 +157,10 @@ A_C2 = AC2_over_A1 * A_1;
 A_4 = A4_over_A1 * A_1;
 
 % Thermodynamic efficiency
-ThermoEff = cycleEfficiency(T_1,T_2,f_fa,epsilon,,,C_p);
-
+ThermoEff = cycleEfficiency(T_1,T_2,f_fa,epsilon,compressorEff(P_1,P_2,gamma,T_1,T_2),expansionEff(T_b,T_4,P_1,P_2),C_p);
 
 % Propulsive efficiency
+PropEff = propEfficiency(gamma,R,M_1,M_4,A_1,A_4,T_1,T_4);
 
 %% Plotting
 %% Varying P_1 (Freestream pressure)
