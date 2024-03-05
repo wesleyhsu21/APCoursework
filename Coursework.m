@@ -220,10 +220,24 @@ betterPlot(VaryT1)
 % Varying flight Mach Number
 
 % Defining range over which M_1 (flight Mach number) is varied
-M_1_range = linspace(1.5,6,1000)
+M_1_range = linspace(1.5,6,1000);
 
 % Using for loop to ittereate throuhg 
+for i = [1:length(M_1_range)]
+    [A_1,A_C1,A_2,A_b,A_C2,A_4,eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(P_1,T_1,M_1_range(i),M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R);
+end
 
+% Creating the figure for efficiency vs Flight Mach number
+figure
+plot(M_1_range,eta_prop)
+hold on
+plot(M_1_range,eta_thermo)
+hold on
+plot(M_1_range,eta_total)
+hold off
+xlabel("Flight Mach number")
+ylabel('$\eta$')
+legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
 
 
 % Better Plot
