@@ -50,10 +50,12 @@ T_b = 1700;     % Burner temperature                    [K]
 P_2 = 150000;   % Pressure just before burner entrance  [Pa]
 P_b = P_2;      % Burner pressure                       [Pa]
 F = 20000;      % Required thrust                       [N]
+
 P_1 = linspace(0,110000,200);
 eta_P1thermo = zeros(1,200);
 eta_P1prop = zeros(1,200);
 eta_P1total = zeros(1,200);
+
 for i = 1:200
     [eta_P1prop(i),eta_P1thermo(i),eta_P1total(i)] = mainRamjet(P_1(i),T_1,M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R,f_fa,epsilon);
 end
