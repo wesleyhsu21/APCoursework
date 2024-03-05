@@ -1,4 +1,4 @@
-function [A_1,AC1_over_A1,A2_over_A1,AC2_over_A1,A4_over_A1] = mainRamjet(P_1,T_1,M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R)
+function [A_1,A_C1,A_2,A_b,A_C2,A_4] = mainRamjet(P_1,T_1,M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R)
 % Function to calculate the main output parameters of a ramjet given
 % relevant input parameters
 %
@@ -127,6 +127,7 @@ A_C1 = AC1_over_A1 * A_1;
 A_2 = A2_over_A1 * A_1;
 
 % Burner exit area
+A_b = Ab_over_A1 * A_1;
 
 % Nozzle throat area
 A_C2 = AC2_over_A1 * A_1;
