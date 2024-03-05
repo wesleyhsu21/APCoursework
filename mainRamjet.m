@@ -143,12 +143,12 @@ A_C2 = AC2_over_A1 * A_1;
 A_4 = A4_over_A1 * A_1;
 
 % Propulsive efficiency
-compEff = compressorEff(P_1,P_2,gamma,T_1,T_2);
-expEff = expansionEff(T_b,T_4,P_1,P_2,gamma);
-eta_prop = cycleEfficiency(T_1,T_2,f_fa,epsilon,compEff,expEff,C_p);
+eta_prop = propEfficiency(gamma,R,M_1,M_4,A_1,A_4,T_1,T_4);
 
 % Thermodynamic efficiency
-eta_thermo = propEfficiency(gamma,R,M_1,M_4,A_1,A_4,T_1,T_4);
+compEff = compressorEff(P_1,P_2,gamma,T_1,T_2);
+expEff = expansionEff(T_b,T_4,P_1,P_2,gamma);
+eta_thermo = cycleEfficiency(T_1,T_2,f_fa,epsilon,compEff,expEff,C_p);
 
 % Total Efficiency
 eta_total = eta_thermo * eta_prop;
