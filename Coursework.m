@@ -157,80 +157,84 @@ A_4 = A4_over_A1 * A_1;
 %% Plotting
 %% Varying P_1 (Freestream pressure)
 % Varying thermodynamic efficiency
+VaryP1thermo = figure;
 
-
+betterPlot(VaryP1thermo)
 % Varying propulsive efficiency
+VaryP1prop = figure;
 
+betterPlot(VaryP1prop)
 
 
 %% Varying T_1 (Freestream temperature)
 % Varying thermodynamic efficiency
+VaryT1thermo = figure;
 
-
+betterPlot(VaryT1thermo)
 % Varying propulsive efficiency
+VaryT1prop = figure;
 
-
-
-
+betterPlot(VaryT1prop)
 %% Varying M_1 (Flight Mach number)
 % Varying thermodynamic efficiency
+VaryM1thermo = figure;
 
-
+betterPlot(VaryM1thermo)
 % Varying propulsive efficiency
+VaryM1prop = figure;
 
-
-
-
+betterPlot(VaryM1prop)
 %% Varying M_N (Normal Shock Strength)
 % Varying thermodynamic efficiency
+VaryMNthermo = figure;
 
-
+betterPlot(VaryMNthermo)
 % Varying propulsive efficiency
+VaryMNprop = figure;
 
-
-
-
+betterPlot(VaryMNprop)
 %% Varying M_b (Burner entry Mach number)
 % Varying thermodynamic efficiency
+VaryMbthermo = figure;
 
-
+betterPlot(VaryMbthermo)
 % Varying propulsive efficiency
+VaryMbprop = figure;
 
-
-
-
+betterPlot(VaryMbprop)
 %% Varying T_b (Burner temperature)
 % Varying thermodynamic efficiency
+VaryTbthermo = figure;
 
-
+betterPlot(VaryTbthermo)
 % Varying propulsive efficiency
+VaryTbprop = figure;
 
-
-
-
+betterPlot(VaryTbprop)
 %% Varying P_b/P_2 (Burner pressure ratio)
 % Varying thermodynamic efficiency
+VaryPbP2thermo = figure;
 
-
+betterPlot(VaryPbP2thermo)
 % Varying propulsive efficiency
+VaryPbP2prop = figure;
 
-
-
-
+betterPlot(VaryPbP2prop)
 %% Varying P_4/P_1 (Exhaust pressure ratio)
 % Varying thermodynamic efficiency
+VaryP4P1thermo = figure;
 
-
+betterPlot(VaryP4P1thermo)
 % Varying propulsive efficiency
+VaryP4P1prop = figure;
 
-
-
-
+betterPlot(VaryP4P1prop)
 %% Varying Thrust (Required Thrust)
 % Varying thermodynamic efficiency
+VaryTthermo = figure;
 
-
+betterPlot(VaryTthermo)
 % Varying propulsive efficiency
+VaryTprop = figure;
 
-
-
+betterPlot(VaryTprop)
