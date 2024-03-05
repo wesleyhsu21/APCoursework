@@ -192,7 +192,16 @@ VaryT1prop = figure;
 
 betterPlot(VaryT1prop)
 %% Varying M_1 (Flight Mach number)
-% Varying thermodynamic efficiency
+% Varying flight Mach Number
+
+% Defining range over which M_1 (flight Mach number) is varied
+M_1_range = linspace(1.5,6,1000)
+
+% Using for loop to ittereate throuhg 
+
+
+
+% Better Plot
 VaryM1thermo = figure;
 
 betterPlot(VaryM1thermo)
