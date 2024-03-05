@@ -68,7 +68,7 @@ T_2 = T2_over_T1 * T_1;
 P02_over_P2 = M2P0ratio(M_2,gamma);
 
 %% Station b - End of burner (burn complete)
-[M_b,~] = RaleighBurner(T_2,T_b,M_2,gamma);
+%[M_b,~] = RaleighBurner(T_2,T_b,M_2,gamma);
 % Needs to be subsonic or flow will choke, one other constraint, see eq
 % May need another plot, slide 40 Lecture 3.
 
