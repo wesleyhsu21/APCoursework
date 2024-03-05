@@ -144,6 +144,7 @@ A_C1 = AC1_over_A1 * A_1;
 A_2 = A2_over_A1 * A_1;
 
 % Burner exit area
+A_b = Ab_over_A1 * A_1;
 
 % Nozzle throat area
 A_C2 = AC2_over_A1 * A_1;
