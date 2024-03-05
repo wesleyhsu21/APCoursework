@@ -190,7 +190,7 @@ hold off
 betterPlot(VaryP1)
 %% Varying T_1 (Freestream temperature)
 
-P_1 = 70000
+P_1 = 70000;
 % T_1 = 210;      % Freestream temperature                [K]
 M_1 = 2.8;      % Flight Mach number                    []
 M_N = 1.1;      % Normal shock strength                 []
@@ -206,7 +206,7 @@ eta_T1prop = zeros(1,200);
 eta_T1total = zeros(1,200);
 
 for i = 1:200
-    [eta_T1thermo(i),eta_T1prop(i),eta_Ttotal(i)] = mainRamjet(P_1,T_1(i),M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R);
+    [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i)] = mainRamjet(P_1,T_1(i),M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R);
 end
 
 VaryT1 = figure;
