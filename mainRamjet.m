@@ -3,17 +3,24 @@ function [A_1,A_C1,A_2,A_b,A_C2,A_4] = mainRamjet(P_1,T_1,M_1,M_N,M_b,T_b,P_2,P_
 % relevant input parameters
 %
 % Inputs:
-% P_1   % Freestream pressure                   [Pa]
-% T_1   % Freestream temperature                [K]
-% M_1   % Flight Mach number                    []
-% M_N   % Normal shock strength                 []
-% M_b   % Burner entry Mach number              []         % ASSIGNED SOMEWHERE ELSE??
-% T_b   % Burner temperature                    [K]
-% P_2   % Pressure just before burner entrance  [Pa]
-% P_b   % Burner pressure                       [Pa]
+% P_1   = Freestream pressure                   [Pa]
+% T_1   = Freestream temperature                [K]
+% M_1   = Flight Mach number                    []
+% M_N   = Normal shock strength                 []
+% M_b   = Burner entry Mach number              []         % ASSIGNED SOMEWHERE ELSE??
+% T_b   = Burner temperature                    [K]
+% P_2   = Pressure just before burner entrance  [Pa]
+% P_b   = Burner pressure                       [Pa]
 %
 % Outputs:
-% 
+% A_1   = Inlet Area
+% A_C1  = Inlet Throst Area
+% A_2   = Burner Entry Area
+% A_b   = Burner Exit Area
+% A_C2  = Nozzle Throat Area
+% A_4   = Exhaust Area
+% eta_t = Thermodynamic Efficiency
+% eta_p = Propulsive Efficiency
 
 Pb_over_P2 = P_b / P_2;
 P4_over_P1 = P_4 / P_1;

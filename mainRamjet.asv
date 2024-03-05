@@ -1,22 +1,26 @@
-function [] = mainRamjet(P_1,T_1,M_1,M_N,M_b,T_b,P_2,P_b,gamma,M_2,R)
+function [A_1,A_C1,A_2,A_b,A_C2,A_4] = mainRamjet(P_1,T_1,M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R)
 % Function to calculate the main output parameters of a ramjet given
 % relevant input parameters
 %
 % Inputs:
-% P_1   % Freestream pressure                   [Pa]
-% T_1   % Freestream temperature                [K]
-% M_1   % Flight Mach number                    []
-% M_N   % Normal shock strength                 []
-% M_b   % Burner entry Mach number              []         % ASSIGNED SOMEWHERE ELSE??
-% T_b   % Burner temperature                    [K]
-% P_2   % Pressure just before burner entrance  [Pa]
-% P_b   % Burner pressure                       [Pa]
+% P_1   = Freestream pressure                   [Pa]
+% T_1   = Freestream temperature                [K]
+% M_1   = Flight Mach number                    []
+% M_N   = Normal shock strength                 []
+% M_b   = Burner entry Mach number              []         % ASSIGNED SOMEWHERE ELSE??
+% T_b   = Burner temperature                    [K]
+% P_2   = Pressure just before burner entrance  [Pa]
+% P_b   = Burner pressure                       [Pa]
 %
 % Outputs:
-% 
+% A_1
+% A_C1
+% A_2
+% A_b
+% A_C2
+% A_4
 
 Pb_over_P2 = P_b / P_2;
-P_4 = P_1;
 P4_over_P1 = P_4 / P_1;
 
 %% Station 1 - Freestream
@@ -69,7 +73,7 @@ T_2 = T2_over_T1 * T_1;
 P02_over_P2 = M2P0ratio(M_2,gamma);
 
 %% Station b - End of burner (burn complete)
-[M_b,~] = RaleighBurner(T_2,T_b,M_2,gamma);
+%[M_b,~] = RaleighBurner(T_2,T_b,M_2,gamma);
 % Needs to be subsonic or flow will choke, one other constraint, see eq
 % May need another plot, slide 40 Lecture 3.
 
@@ -116,3 +120,22 @@ T_4 = T_b * T4_over_Tb;
 U_4 = M_4 * sqrt(gamma * R * T_4);
 
 F_over_P1A1 = gamma * M_1^2 * (M_4^2 / M_1^2 * A4_over_A1 - 1); % CHECK, APPROX
+
+%% Outputs
+% Inlet area
+A_1 = 1 / ( ((P_1 * gamma * M_1^2) / F) *( ((M_4/M_1) ^ 2) * A4_over_A1 -1 ) );
+
+% Inlet throat area
+A_C1 = AC1_over_A1 * A_1;
+
+% Burner entry area
+A_2 = A2_over_A1 * A_1;
+
+% Burner exit area
+A_b = Ab_over_A1 * A_1;
+
+% Nozzle throat area
+A_C2 = AC2_over_A1 * A_1;
+
+% Exhaust area
+A_4 = A4_over_A1 * A_1;
