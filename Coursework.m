@@ -159,6 +159,7 @@ A_4 = A4_over_A1 * A_1;
 % Thermodynamic efficiency
 ThermoEff = cycleEfficiency(T_1,T_2,f_fa,epsilon,,,C_p);
 
+
 % Propulsive efficiency
 
 %% Plotting
