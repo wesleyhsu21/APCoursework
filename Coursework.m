@@ -220,7 +220,7 @@ betterPlot(VaryT1)
 % Varying flight Mach Number
 
 % Defining range over which M_1 (flight Mach number) is varied
-M_1_range = linspace(1.5,6,1000);
+M_1_range = linspace(1.5,6,500);
 
 % Using for loop to ittereate throuhg 
 for i = [1:length(M_1_range)]
