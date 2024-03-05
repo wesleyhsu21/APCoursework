@@ -200,7 +200,7 @@ P_2 = 150000;   % Pressure just before burner entrance  [Pa]
 P_b = P_2;      % Burner pressure                       [Pa]
 F = 20000;      % Required thrust                       [N]
 
-T_1 = linspace(0,110000,200);
+T_1 = linspace(200,350,200);
 eta_T1thermo = zeros(1,200);
 eta_T1prop = zeros(1,200);
 eta_T1total = zeros(1,200);
