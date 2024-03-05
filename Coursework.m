@@ -35,6 +35,10 @@ gamma = 1.4;    % Ratio of specific heats (Changes with T!)
 M_2 = 0.2;      % Mach number at start of burner section
 R = 287;
 
+epsilon = 44786e3;
+f_fa = 0.06641;
+C_p = 1.0045e3;
+
 %% Station 1 - Freestream
 T01_over_T1 = M2T0ratio(M_1,gamma);
 T0x_over_T1 = T01_over_T1;
