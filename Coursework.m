@@ -29,7 +29,7 @@ P_4 = P_1;   % Exhaust pressure                      [Pa]       % CHECK
 % Exhaust pressure ratio (P_4 / P_1)
 P4_over_P1 = P_4 / P_1;
 
-%F =            % Required thrust                       [N]
+F = 20000;           % Required thrust                       [N]
 
 gamma = 1.4;    % Ratio of specific heats (Changes with T!)
 M_2 = 0.2;      % Mach number at start of burner section
@@ -135,7 +135,6 @@ F_over_P1A1 = gamma * M_1^2 * (M_4^2 / M_1^2 * A4_over_A1 - 1); % CHECK, APPROX
 
 %% Outputs
 % Inlet area
-
 A_1 = 1 / ( ((P_1 * gamma * M_1^2) / F) *( ((M_4/M_1) ^ 2) * A4_over_A1 -1 ) );
 
 % Inlet throat area
