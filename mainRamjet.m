@@ -40,7 +40,7 @@ AC1_over_A1 = 1 / A1_over_AC1;
 %% Station x - Just before shock
 M_x = M_N;
 
-[M_y,Ty_over_Tx,Py_over_Px,rhoy_over_rhox] = normalShockRelations(M_N,gamma);
+[M_y,Ty_over_Tx,Py_over_Px,~] = normalShockRelations(M_N,gamma);
 
 T0x_over_Tx = M2T0ratio(M_N,gamma);
 
@@ -145,9 +145,7 @@ A_4 = A4_over_A1 * A_1;
 eta_prop = propEfficiency(F_over_P1A1,gamma,R,M_1,M_4,T_1,T_4);
 
 % Thermodynamic efficiency
-comp_eff = compressorEff(P_1,P_2,gamma,T_1,T_2);
-exp_eff = expansionEff(T_b,T_4,P_1,P_2,gamma);
-eta_thermo = cycleEfficiency(T_b,T_4,T_1,P_1,gamma,P_2,T_2,C_p,f_fa,epsilon);
+eta_thermo = cycleEfficiency(T_1,T_2,T_b,T_4);
 
 % Total Efficiency
 eta_total = eta_thermo * eta_prop;
