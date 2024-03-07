@@ -51,7 +51,7 @@ P_2 = 150000;   % Pressure just before burner entrance  [Pa]
 P_b = P_2;      % Burner pressure                       [Pa]
 F = 20000;      % Required thrust                       [N]
 
-P_1 = linspace(0,110000,200);
+P_1 = linspace(50000,110000,200);
 eta_P1thermo = zeros(1,200);
 eta_P1prop = zeros(1,200);
 eta_P1total = zeros(1,200);
@@ -85,7 +85,7 @@ eta_T1prop = zeros(1,200);
 eta_T1total = zeros(1,200);
 
 for i = 1:200
-    [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i)] = mainRamjet(P_1,T_1(i),M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R);
+    [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i)] = mainRamjet(P_1,T_1(i),M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R,f_fa,epsilon,C_p);
 end
 
 VaryT1 = figure;
@@ -147,7 +147,7 @@ betterPlot(VaryMbprop)
 %% Varying T_b (Burner temperature)
 
 %T_b range
-T_b_range = linspace(T_1,)
+%T_b_range = linspace(T_1,)
 
 % Varying thermodynamic efficiency
 VaryTbthermo = figure;
