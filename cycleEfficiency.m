@@ -1,31 +1,17 @@
 function cycle_eff = cycleEfficiency(T_1,T_2,T_b,T_4)
-
-% Funtion to calculate the cycle efficiency using the compression
+% Funtion to calculate the thermodynamic cycle efficiency using the compression
 % temperature ratio T1/T2
 %
 % Inputs:
-% T_1       =
-% T_2       =
-% f_fa      =
-% epsilon   =
-% comp_eff  =
-% exp_eff   =
-% C_p       =
+% T_1       = Atmospheric Pressure
+% T_2       = Temperature at the beginning of the burner
+% T_b       = Temperature at the end of the burner
+% T_4       = Temperature at the exhaust
 %
 % Outputs:
-% cycle eff =
-
-%T_1,T_2,T_b,T_4
-%T_1,T_2,f_fa,epsilon,comp_eff,exp_eff,C_p
-
-% fuel to air ratio f_fa and expansion and compression efficiencies
-% comp_eff exp_eff
-
-% comp_T_ratio = T_1/T_2;
-% 
-% cycle_eff = (C_p *T_1/(f_fa * epsilon)) * (1/comp_T_ratio - 1) * (comp_eff * ...
-%     exp_eff * (1 + comp_T_ratio * f_fa * epsilon/ C_p * T_1) - 1);
+% cycle_eff = Thermodynamic cycle efficiency
 
 cycle_eff = 1 - ((T_4 - T_1) / (T_b - T_2));
+
 end
 

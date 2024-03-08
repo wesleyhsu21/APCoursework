@@ -3,24 +3,27 @@ function [eta_prop,eta_thermo,eta_total,checkError,A_1,A_C1,A_2,A_b,A_C2,A_4] = 
 % relevant input parameters
 % T_b,T_4,T_1,P_1,gamma,P_2,T_2,C_p,f_fa,epsilon
 % Inputs:
-% P_1   = Freestream pressure                   [Pa]
-% T_1   = Freestream temperature                [K]
-% M_1   = Flight Mach number                    []
-% M_N   = Normal shock strength                 []
-% M_b   = Burner entry Mach number              []         % ASSIGNED SOMEWHERE ELSE??
-% T_b   = Burner temperature                    [K]
-% P_2   = Pressure just before burner entrance  [Pa]
-% P_b   = Burner pressure                       [Pa]
+% F             = Required Thrust                       [N]
+% gamma         = Ratio of specific heats               []
+% M_1           = Flight Mach number                    []
+% M_2           = Start of burner Mach number           []
+% M_N           = Normal shock strength                 []
+% P_1           = Atmospheric pressure                  [Pa]
+% R             = Ideal gas constant                    [J/(KgK)]
+% T_1           = Atmospheric temperature               [K]
+% T_b           = Temperature at the end of burner      [K]
 %
 % Outputs:
-% A_1   = Inlet Area
-% A_C1  = Inlet Throst Area
-% A_2   = Burner Entry Area
-% A_b   = Burner Exit Area
-% A_C2  = Nozzle Throat Area
-% A_4   = Exhaust Area
-% eta_t = Thermodynamic Efficiency
-% eta_p = Propulsive Efficiency
+% eta_prop      = Propulsive efficiency                 []
+% eta_thermo    = Thermodynamic efficiency              []
+% eta_total     = Total efficiency                      []
+% checkError    = String to check if M_b is imaginary   []
+% A_1           = Inlet area                            [m^2]
+% A_C1          = First nozzle throat area              [m^2]
+% A_2           = Area at the start of the burner       [m^2]
+% A_b           = Area at the end of the burner         [m^2]
+% A_C2          = Second nozzle throat area             [m^2]
+% A_4           = Exhaust nozzle area                   [m^2]
 %% Station 1 - Freestream
 T01_over_T1 = M2T0ratio(M_1,gamma);
 T0x_over_T1 = T01_over_T1;
@@ -83,7 +86,6 @@ end
 
 
 %% Station b - End of burner (burn complete)
-%[M_b,~] = RaleighBurner(T_2,T_b,M_2,gamma);
 % Needs to be subsonic or flow will choke, one other constraint, see eq
 % May need another plot, slide 40 Lecture 3.
 

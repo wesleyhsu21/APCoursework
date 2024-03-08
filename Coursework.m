@@ -48,21 +48,24 @@ eta_P1total = zeros(1,200);
 for i = 1:200
     [eta_P1prop(i),eta_P1thermo(i),eta_P1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1_range(i),R,T_1,T_b);
 end
+
 VaryP1 = figure;
 hold on
 plot(P_1_range,eta_P1prop)
 plot(P_1_range,eta_P1thermo)
 plot(P_1_range,eta_P1total)
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside")
+ylabel("$\eta$")
+xlabel("$P_1$ / Pa")
 hold off
 ylim([0 1])
+xlim([0 120000])
 betterPlot(VaryP1)
 %% Varying T_1 (Freestream temperature)
 T_1_range = linspace(200,350,200);
 eta_T1thermo = zeros(1,200);
 eta_T1prop = zeros(1,200);
 eta_T1total = zeros(1,200);
-checkError = zeros(1,200);
 
 for i = 1:200
     [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1_range(i),T_b);
@@ -74,6 +77,8 @@ plot(T_1_range,eta_T1prop)
 plot(T_1_range,eta_T1thermo)
 plot(T_1_range,eta_T1total)
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside")
+ylabel("$\eta$")
+xlabel("$T_1$ / K")
 hold off
 betterPlot(VaryT1)
 %% Varying M_1 (Flight Mach number)

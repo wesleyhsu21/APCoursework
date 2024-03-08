@@ -1,4 +1,4 @@
-function T0_over_T = M2T0ratio(M,   gamma)
+function T0_over_T = M2T0ratio(M,gamma)
 % Function to calculate the ratio between stagnation temperature and static
 % temperature using isentropic flow relations
 %
