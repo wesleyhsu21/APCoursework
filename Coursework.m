@@ -3,7 +3,7 @@
 % input parameters to the engine.
 
 % Coded by:
-% Wesley Hsux
+% Wesley Hsu
 % (Ayo) Ayooluwa Babalola
 % Lasen T Wanni Arachchige
 % (Jayden) Chi Him Chun
