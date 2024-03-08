@@ -22,17 +22,12 @@ M_b = 0.42;     % Burner entry Mach number              []         % ASSIGNED SO
 T_b = 1700;     % Burner temperature                    [K]
 P_2 = 150000;   % Pressure just before burner entrance  [Pa]
 P_b = P_2;      % Burner pressure                       [Pa]
-% % Burner pressure ratio (P_b / P_2)
-% Pb_over_P2 = P_b / P_2; %SHOULD THIS BE 1??
 
-%P_4 = P_1;   % Exhaust pressure                      [Pa]       % CHECK
+% Burner pressure ratio
+Pb_over_P2 = 1;
+
 % Exhaust pressure ratio (P_4 / P_1)
-<<<<<<< Updated upstream
-%P4_over_P1 = P_4 / P_1;
-=======
-P4_over_P1 = P_4 / P_1;
-Pb_over_P2 = P_b / P_2;
->>>>>>> Stashed changes
+P4_over_P1 = 1;
 
 F = 20000;      % Required thrust                       [N]
 
@@ -51,7 +46,7 @@ eta_P1prop = zeros(1,200);
 eta_P1total = zeros(1,200);
 
 for i = 1:200
-    [eta_P1prop(i),eta_P1thermo(i),eta_P1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1_range(i),R,T_1,T_b,1,1);
+    [eta_P1prop(i),eta_P1thermo(i),eta_P1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1_range(i),R,T_1,T_b,Pb_over_P2,P4_over_P1,);
 end
 
 VaryP1 = figure;
