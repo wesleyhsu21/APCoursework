@@ -15,6 +15,7 @@ function [] = betterPlot(figure)
     lgd = legend;
     box on;
     grid on;
+    grid minor;
     ax.FontSize = 16;
     ax.TickLabelInterpreter = "latex";
     ax.XLabel.Interpreter = "latex";
