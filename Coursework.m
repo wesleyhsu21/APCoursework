@@ -160,7 +160,7 @@ F = linspace(0,200e3,500); %thrust range for general ramjet engines
 
 % Calculate efficiencies for each thrust value
 for i = 1:length(F)
-    [eta_Fprop(i), eta_Fthermo(i), eta_Ftotal(i)] = mainRamjet(P_1, T_1, M_1, M_N, M_b, T_b, P_2, P_b, P_4, F(i), gamma, M_2, R);
+    [eta_Fprop(i), eta_Fthermo(i), eta_Ftotal(i)] = mainRamjet(F(i),gamma,M_1,M_2,M_N,P_1,R,T_1,T_b);
 end
 
 % Plot graphs
