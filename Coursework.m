@@ -18,7 +18,7 @@ P_1 = 70000;    % Freestream pressure                   [Pa]
 T_1 = 210;      % Freestream temperature                [K]
 M_1 = 2.8;      % Flight Mach number                    []
 M_N = 1.1;      % Normalc shock strength                []
-M_b = 0.42;     % Burner entry Mach number              []         % ASSIGNED SOMEWHERE ELSE??
+M_b = 0.42;      % Burner entry Mach number              []         % ASSIGNED SOMEWHERE ELSE??
 T_b = 1700;     % Burner temperature                    [K]
 P_2 = 150000;   % Pressure just before burner entrance  [Pa]
 P_b = P_2;      % Burner pressure                       [Pa]
@@ -32,7 +32,7 @@ P4_over_P1 = 1;
 F = 20000;      % Required thrust                       [N]
 
 gamma = 1.4;    % Ratio of specific heats (Changes with T!)
-M_2 = 0.2;      % Mach number at start of burner section
+M_2 = 0.26;      % Mach number at start of burner section
 R = 287;
 
 epsilon = 44786e3;
@@ -133,7 +133,7 @@ betterPlot(VaryMN)
 %% Varying M_2 (Burner entry Mach number)
 % Varying Burner Mach number
  
-M_2_range = linspace(0,0.25,200); 
+M_2_range = linspace(0,0.5,200); 
 eta_M2thermo = zeros(1,200); 
 eta_M2prop = zeros(1,200); 
 eta_M2total = zeros(1,200); 
@@ -152,18 +152,18 @@ legend("$\eta_{cycle}$","$\eta_{prop}$","$\eta_{total}$",Location="northeastouts
 ylabel("$\eta$") 
 xlabel("$M_2$ / K") 
 hold off 
- 
+xlim([0 0.5])
 
 betterPlot(VaryMbthermo)
 %% Varying T_b (Burner temperature)
 %varying burner temperature
-T_b_range = linspace(0,2200,200); 
-eta_Tbthermo = zeros(1,200); 
-eta_Tbprop = zeros(1,200); 
-eta_Tbtotal = zeros(1,200); 
+T_b_range = linspace(0,2200,1000); 
+eta_Tbthermo = zeros(1,1000); 
+eta_Tbprop = zeros(1,1000); 
+eta_Tbtotal = zeros(1,1000); 
  
-for i = 1:200 
-    [eta_Tbthermo(i),eta_Tbprop(i),eta_Tbtotal(i)] = mainRamjet(F,gamma,M_1,M_b,M_N,P_1,R,T_1,T_b_range(i),Pb_over_P2,P4_over_P1); 
+for i = 1:1000 
+    [eta_Tbthermo(i),eta_Tbprop(i),eta_Tbtotal(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1,T_b_range(i),Pb_over_P2,P4_over_P1); 
 end 
  
 VaryTbthermo = figure; 
@@ -172,7 +172,7 @@ hold on
 plot(T_b_range,eta_Tbthermo, 'LineWidth', 1) 
 plot(T_b_range,eta_Tbprop, 'LineWidth', 1) 
 plot(T_b_range,eta_Tbtotal, 'LineWidth', 1) 
-legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside") 
+legend("$\eta_{cycle}$","$\eta_{prop}$","$\eta_{total}$",Location="northeastoutside") 
 ylabel("$\eta$") 
 xlabel("$T_b$ / K") 
 hold off 
