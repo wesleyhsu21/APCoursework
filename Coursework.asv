@@ -3,7 +3,7 @@
 % input parameters to the engine.
 
 % Coded by:
-% Wesley Hsu
+% Wesley Hsux
 % (Ayo) Ayooluwa Babalola
 % Lasen T Wanni Arachchige
 % (Jayden) Chi Him Chun
@@ -26,7 +26,10 @@ P_b = P_2;      % Burner pressure                       [Pa]
 % Pb_over_P2 = P_b / P_2; %SHOULD THIS BE 1??
 
 %P_4 = P_1;   % Exhaust pressure                      [Pa]       % CHECK
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 % Exhaust pressure ratio (P_4 / P_1)
 P4_over_P1 = P_4 / P_1;
 <<<<<<< Updated upstream
@@ -34,6 +37,10 @@ P4_over_P1 = P_4 / P_1;
 =======
 >>>>>>> Stashed changes
 Pb_over_P2 = P_b / P_2;
+=======
+Pb_over_P2 = P_b / P_2;
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 F = 20000;      % Required thrust                       [N]
 
@@ -98,7 +105,11 @@ M_1_range = linspace(0,8,500);
 
 % Using for loop to ittereate throuhg 
 for i = [1:length(M_1_range)]
+<<<<<<< Updated upstream
     [eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(F,gamma,M_1_range(i),M_2,M_N,P_1,R,T_1,T_b);
+=======
+    [eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(F,gamma,M_1_range(i),M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1);
+>>>>>>> Stashed changes
 end
 
 % Creating the figure for efficiency vs Flight Mach number
@@ -118,9 +129,34 @@ betterPlot(VaryM1)
 
 %% Varying M_N (Normal Shock Strength)
 % Varying Normal Shock Strength
+<<<<<<< Updated upstream
 VaryMNthermo = figure;
 
 betterPlot(VaryMNthermo)
+=======
+% Defining range over which M_N (Normal Shock Strength) is varied
+M_N_range = linspace(0,6,500);
+
+% Using for loop to ittereate throuhg 
+for i = [1:length(M_N_range)]
+    [eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N_range,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1);
+end
+
+% Creating the figure for efficiency vs Flight Mach number
+VaryMN = figure;
+plot(M_N_range,eta_prop)
+hold on
+plot(M_N_range,eta_thermo)
+hold on
+plot(M_N_range,eta_total)
+hold off
+xlabel("Normal Shock Strength M$_{N}$")
+ylabel('Efficiencies ($\eta$)')
+legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
+
+% Better Plot
+betterPlot(VaryMN)
+>>>>>>> Stashed changes
 %% Varying M_b (Burner entry Mach number)
 % Varying thermodynamic efficiency
 VaryMbthermo = figure;

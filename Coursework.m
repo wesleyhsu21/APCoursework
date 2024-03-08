@@ -3,7 +3,7 @@
 % input parameters to the engine.
 
 % Coded by:
-% Wesley Hsu
+% Wesley Hsux
 % (Ayo) Ayooluwa Babalola
 % Lasen T Wanni Arachchige
 % (Jayden) Chi Him Chun
@@ -68,7 +68,7 @@ eta_T1prop = zeros(1,200);
 eta_T1total = zeros(1,200);
 
 for i = 1:200
-    [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1_range(i),T_b);
+    [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1_range(i),T_b,Pb_over_P2,P4_over_P1);
 end
 
 VaryT1 = figure;
@@ -89,7 +89,7 @@ M_1_range = linspace(0,8,500);
 
 % Using for loop to ittereate throuhg 
 for i = [1:length(M_1_range)]
-    [eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(F,gamma,M_1_range(i),M_2,M_N,P_1,R,T_1,T_b);
+    [eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(F,gamma,M_1_range(i),M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1);
 end
 
 % Creating the figure for efficiency vs Flight Mach number
@@ -109,9 +109,28 @@ betterPlot(VaryM1)
 
 %% Varying M_N (Normal Shock Strength)
 % Varying Normal Shock Strength
-VaryMNthermo = figure;
+% Defining range over which M_N (Normal Shock Strength) is varied
+M_N_range = linspace(0,6,500);
 
-betterPlot(VaryMNthermo)
+% Using for loop to ittereate throuhg 
+for i = [1:length(M_N_range)]
+    [eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N_range,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1);
+end
+
+% Creating the figure for efficiency vs Flight Mach number
+VaryMN = figure;
+plot(M_N_range,eta_prop)
+hold on
+plot(M_N_range,eta_thermo)
+hold on
+plot(M_N_range,eta_total)
+hold off
+xlabel("Normal Shock Strength M$_{N}$")
+ylabel('Efficiencies ($\eta$)')
+legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
+
+% Better Plot
+betterPlot(VaryMN)
 %% Varying M_b (Burner entry Mach number)
 % Varying thermodynamic efficiency
 VaryMbthermo = figure;
