@@ -1,4 +1,4 @@
-function prop_eff = propEfficiency(F_over_P1A1,gamma,R,M_1, M_4,T_1,T_4)
+function prop_eff = propEfficiency(F_over_P1A1,gamma,R,M_1,M_4,T_1,T_4)
 % Funtion to calculate the cycle efficiency using the compression
 % temperature ratio T1/T2
 %

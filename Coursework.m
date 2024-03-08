@@ -133,22 +133,22 @@ betterPlot(VaryMN)
 %% Varying M_2 (Burner entry Mach number)
 % Varying Burner Mach number
  
-M_2_range = linspace(0.1,0.9,200); 
-eta_Tbthermo = zeros(1,200); 
-eta_Tbprop = zeros(1,200); 
-eta_Tbtotal = zeros(1,200); 
+M_2_range = linspace(0,1.5,200); 
+eta_M2thermo = zeros(1,200); 
+eta_M2prop = zeros(1,200); 
+eta_M2total = zeros(1,200); 
  
 for i = 1:200 
-    [eta_Tbthermo(i),eta_Tbprop(i),eta_Tbtotal(i)] = mainRamjet(F,gamma,M_1,M_2_range(i),M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1); 
+    [eta_M2thermo(i),eta_M2prop(i),eta_M2total(i)] = mainRamjet(F,gamma,M_1,M_2_range(i),M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1); 
 end 
  
 VaryMbthermo = figure; 
  
 hold on 
-plot(M_2_range,eta_Tbthermo, 'LineWidth', 1) 
-plot(M_2_range,eta_Tbprop, 'LineWidth', 1) 
-plot(M_2_range,eta_Tbtotal, 'LineWidth', 1) 
-legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside") 
+plot(M_2_range,eta_M2thermo, 'LineWidth', 1) 
+plot(M_2_range,eta_M2prop, 'LineWidth', 1) 
+plot(M_2_range,eta_M2total, 'LineWidth', 1) 
+legend("$\eta_{cycle}$","$\eta_{prop}$","$\eta_{total}$",Location="northeastoutside") 
 ylabel("$\eta$") 
 xlabel("$M_2$ / K") 
 hold off 
