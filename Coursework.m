@@ -46,7 +46,7 @@ eta_P1prop = zeros(1,200);
 eta_P1total = zeros(1,200);
 
 for i = 1:200
-    [eta_P1prop(i),eta_P1thermo(i),eta_P1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1_range(i),R,T_1,T_b,Pb_over_P2,P4_over_P1);
+    [eta_P1thermo(i),eta_P1prop(i),eta_P1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1_range(i),R,T_1,T_b,Pb_over_P2,P4_over_P1);
 end
 
 VaryP1 = figure;
@@ -62,12 +62,12 @@ ylim([0 1])
 xlim([0 120000])
 betterPlot(VaryP1)
 %% Varying T_1 (Freestream temperature)
-T_1_range = linspace(200,350,200);
-eta_T1thermo = zeros(1,200);
-eta_T1prop = zeros(1,200);
-eta_T1total = zeros(1,200);
+T_1_range = linspace(0,1000,500);
+eta_T1thermo = zeros(1,500);
+eta_T1prop = zeros(1,500);
+eta_T1total = zeros(1,500);
 
-for i = 1:200
+for i = 1:500
     [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1_range(i),T_b,Pb_over_P2,P4_over_P1);
 end
 
@@ -94,14 +94,13 @@ end
 
 % Creating the figure for efficiency vs Flight Mach number
 VaryM1 = figure;
-plot(M_1_range,eta_prop, 'LineWidth', 1)
 hold on
 plot(M_1_range,eta_thermo, 'LineWidth', 1)
-hold on
+plot(M_1_range,eta_prop, 'LineWidth', 1)
 plot(M_1_range,eta_total, 'LineWidth', 1)
 hold off
-xlabel("Flight Mach Number M$_{1}$")
-ylabel('Efficiencies ($\eta$)')
+xlabel("M$_{1}$")
+ylabel('$\eta$')
 legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
 
 % Better Plot
@@ -119,47 +118,46 @@ end
 
 % Creating the figure for efficiency vs Flight Mach number
 VaryMN = figure;
-plot(M_N_range,eta_prop, 'LineWidth', 1)
 hold on
 plot(M_N_range,eta_thermo, 'LineWidth', 1)
-hold on
+plot(M_N_range,eta_prop, 'LineWidth', 1)
 plot(M_N_range,eta_total, 'LineWidth', 1)
 hold off
-xlabel("Normal Shock Strength M$_{N}$")
-ylabel('Efficiencies ($\eta$)')
+xlabel("M$_{N}$")
+ylabel('$\eta$')
 ylim([0 2])
 legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
 
 % Better Plot
 betterPlot(VaryMN)
-%% Varying M_b (Burner entry Mach number)
+%% Varying M_2 (Burner entry Mach number)
 % Varying Burner Mach number
  
-M_b_range = linspace(0.1,0.9,200); 
+M_2_range = linspace(0.1,0.9,200); 
 eta_Tbthermo = zeros(1,200); 
 eta_Tbprop = zeros(1,200); 
 eta_Tbtotal = zeros(1,200); 
  
 for i = 1:200 
-    [eta_Tbthermo(i),eta_Tbprop(i),eta_Tbtotal(i)] = mainRamjet(F,gamma,M_1,M_b_range(i),M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1); 
+    [eta_Tbthermo(i),eta_Tbprop(i),eta_Tbtotal(i)] = mainRamjet(F,gamma,M_1,M_2_range(i),M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1); 
 end 
  
 VaryMbthermo = figure; 
  
 hold on 
-plot(M_b_range,eta_Tbprop) 
-plot(M_b_range,eta_Tbthermo) 
-plot(M_b_range,eta_Tbtotal) 
+plot(M_2_range,eta_Tbthermo, 'LineWidth', 1) 
+plot(M_2_range,eta_Tbprop, 'LineWidth', 1) 
+plot(M_2_range,eta_Tbtotal, 'LineWidth', 1) 
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside") 
 ylabel("$\eta$") 
-xlabel("$M_b$ / K") 
+xlabel("$M_2$ / K") 
 hold off 
  
 
 betterPlot(VaryMbthermo)
 %% Varying T_b (Burner temperature)
 %varying burner temperature
-T_b_range = linspace(0.1,0.9,200); 
+T_b_range = linspace(0,2200,200); 
 eta_Tbthermo = zeros(1,200); 
 eta_Tbprop = zeros(1,200); 
 eta_Tbtotal = zeros(1,200); 
@@ -171,9 +169,9 @@ end
 VaryTbthermo = figure; 
  
 hold on 
-plot(M_b_range,eta_Tbprop) 
-plot(M_b_range,eta_Tbthermo) 
-plot(M_b_range,eta_Tbtotal) 
+plot(T_b_range,eta_Tbprop, 'LineWidth', 1) 
+plot(T_b_range,eta_Tbthermo, 'LineWidth', 1) 
+plot(T_b_range,eta_Tbtotal, 'LineWidth', 1) 
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside") 
 ylabel("$\eta$") 
 xlabel("$T_b$ / K") 
@@ -198,10 +196,11 @@ plot(Pb_over_P2_range, eta_Ftotal, 'LineWidth', 1, 'DisplayName', 'Total Efficie
 hold off;
 
 % Set labels and title
-xlabel('Pb/P2');
+xlabel('$\frac{P_b}{P_2}$');
 ylabel('$\eta $');
-title('Efficiency vs Pb/P2');
+%title('Efficiency vs Pb/P2');
 legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
+xlim([0.8 1.5])
 grid on;
 
 % Apply betterPlot style (if necessary)
@@ -223,10 +222,11 @@ plot(P4_over_P1_range, eta_Ftotal, 'LineWidth', 1, 'DisplayName', 'Total Efficie
 hold off;
 
 % Set labels and title
-xlabel('P4/P1');
+xlabel('$\frac{P_4}{P_1}$');
 ylabel('$\eta $');
-title('Efficiency vs P4/P1');
+%title('Efficiency vs P4/P1');
 legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
+xlim([0.8 1.5])
 grid on;
 
 % Apply betterPlot style (if necessary)
@@ -248,10 +248,11 @@ plot(F, eta_Ftotal, 'LineWidth', 1, 'DisplayName', 'Total Efficiency');
 hold off;
 
 % Set labels and title
-xlabel('Required Thrust (N)');
+xlabel('Required Thrust / N');
 ylabel('$\eta $');
-title('Efficiency vs Required Thrust');
+%title('Efficiency vs Required Thrust');
 legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
+ylim([0 1])
 grid on;
 
 % Apply betterPlot style (if necessary)
