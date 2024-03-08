@@ -27,7 +27,12 @@ P_b = P_2;      % Burner pressure                       [Pa]
 
 %P_4 = P_1;   % Exhaust pressure                      [Pa]       % CHECK
 % Exhaust pressure ratio (P_4 / P_1)
+<<<<<<< Updated upstream
 %P4_over_P1 = P_4 / P_1;
+=======
+P4_over_P1 = P_4 / P_1;
+Pb_over_P2 = P_b / P_2;
+>>>>>>> Stashed changes
 
 F = 20000;      % Required thrust                       [N]
 
@@ -139,20 +144,37 @@ VaryPbP2prop = figure;
 
 betterPlot(VaryPbP2prop)
 %% Varying P_4/P_1 (Exhaust pressure ratio)
+P4_over_P1 = linspace(0.2,10,500); %From under expanded to over expanded
+var P_4
+
+% Calculate efficiencies for each expansion
+for i = 1:length(P4_over_P1)
+    [eta_Fprop(i), eta_Fthermo(i), eta_Ftotal(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1(i));
+end
+
 % Varying thermodynamic efficiency
 VaryP4P1thermo = figure;
+plot(P4_over_P1, eta_Fthermo, 'LineWidth', 2, 'DisplayName', 'Thermodynamic Efficiency');
+hold on;
+plot(P4_over_P1, eta_Fprop, 'LineWidth', 2, 'DisplayName', 'Propulsive Efficiency');
+plot(P4_over_P1, eta_Ftotal, 'LineWidth', 2, 'DisplayName', 'Total Efficiency');
+hold off;
 
-betterPlot(VaryP4P1thermo)
-% Varying propulsive efficiency
-VaryP4P1prop = figure;
+% Set labels and title
+xlabel('P4/P1');
+ylabel('$\eta $');
+title('Efficiency vs P4/P1');
+legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
+grid on;
 
-betterPlot(VaryP4P1prop)
+% Apply betterPlot style (if necessary)
+betterPlot(VaryP4P1thermo); % Applies the betterPlot style to the current figure
 %% Varying Thrust (Required Thrust)
 F = linspace(0,200e3,500); %thrust range for general ramjet engines
 
 % Calculate efficiencies for each thrust value
 for i = 1:length(F)
-    [eta_Fprop(i), eta_Fthermo(i), eta_Ftotal(i)] = mainRamjet(F(i),gamma,M_1,M_2,M_N,P_1,R,T_1,T_b);
+    [eta_Fprop(i), eta_Fthermo(i), eta_Ftotal(i)] = mainRamjet(F(i),gamma,M_1,M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1);
 end
 
 % Plot graphs
@@ -171,4 +193,4 @@ legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northe
 grid on;
 
 % Apply betterPlot style (if necessary)
-betterPlot(gcf); % Applies the betterPlot style to the current figure
+betterPlot(VaryT); % Applies the betterPlot style to the current figure

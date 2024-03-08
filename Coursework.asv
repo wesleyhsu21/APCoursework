@@ -27,7 +27,11 @@ P_b = P_2;      % Burner pressure                       [Pa]
 
 P_4 = P_1;   % Exhaust pressure                      [Pa]       % CHECK
 % Exhaust pressure ratio (P_4 / P_1)
+<<<<<<< Updated upstream
 %P4_over_P1 = P_4 / P_1;
+=======
+P4_over_P1 = P_4 / P_1;
+>>>>>>> Stashed changes
 
 F = 20000;           % Required thrust                       [N]
 
@@ -50,9 +54,15 @@ for i = 1:200
 end
 VaryP1 = figure;
 hold on
+<<<<<<< Updated upstream
 plot(P_1_range,eta_P1prop)
 plot(P_1_range,eta_P1thermo)
 plot(P_1_range,eta_P1total)
+=======
+plot(P_1,eta_P1prop)
+plot(P_1,eta_P1thermo)
+plot(P_1,eta_P1total)
+>>>>>>> Stashed changes
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside")
 hold off
 ylim([0 1])
@@ -65,7 +75,11 @@ eta_T1total = zeros(1,200);
 checkError = zeros(1,200);
 
 for i = 1:200
+<<<<<<< Updated upstream
     [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i) = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1_range(i),T_b);
+=======
+    [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i),checkError(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1_range(i),T_b);
+>>>>>>> Stashed changes
 end
 
 VaryT1 = figure;
@@ -147,6 +161,16 @@ VaryPbP2prop = figure;
 
 betterPlot(VaryPbP2prop)
 %% Varying P_4/P_1 (Exhaust pressure ratio)
+<<<<<<< Updated upstream
+=======
+P4_over_P1 = linspace(0.2,10,500); %From under expanded to over expanded
+
+% Calculate efficiencies for each expansion
+for i = 1:length(P4_over_P1)
+    [eta_Fprop(i), eta_Fthermo(i), eta_Ftotal(i)] = mainRamjet(F(i),gamma,M_1,M_2,M_N,P_1,R,T_1,T_b);
+end
+
+>>>>>>> Stashed changes
 % Varying thermodynamic efficiency
 VaryP4P1thermo = figure;
 
@@ -158,6 +182,7 @@ betterPlot(VaryP4P1prop)
 %% Varying Thrust (Required Thrust)
 F = linspace(0,200e3,500); %thrust range for general ramjet engines
 
+<<<<<<< Updated upstream
 
 
 % Varying thermodynamic efficiency
@@ -168,3 +193,27 @@ betterPlot(VaryTthermo)
 VaryTprop = figure;
 
 betterPlot(VaryTprop)
+=======
+% Calculate efficiencies for each thrust value
+for i = 1:length(F)
+    [eta_Fprop(i), eta_Fthermo(i), eta_Ftotal(i)] = mainRamjet(F(i),gamma,M_1,M_2,M_N,P_1,R,T_1,T_b);
+end
+
+% Plot graphs
+VaryT = figure;
+plot(F, eta_Fthermo, 'LineWidth', 2, 'DisplayName', 'Thermodynamic Efficiency');
+hold on;
+plot(F, eta_Fprop, 'LineWidth', 2, 'DisplayName', 'Propulsive Efficiency');
+plot(F, eta_Ftotal, 'LineWidth', 2, 'DisplayName', 'Total Efficiency');
+hold off;
+
+% Set labels and title
+xlabel('Required Thrust (N)');
+ylabel('$\eta $');
+title('Efficiency vs Required Thrust');
+legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
+grid on;
+
+% Apply betterPlot style (if necessary)
+betterPlot(gcf); % Applies the betterPlot style to the current figure
+>>>>>>> Stashed changes
