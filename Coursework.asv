@@ -29,7 +29,10 @@ P_b = P_2;      % Burner pressure                       [Pa]
 
 % Exhaust pressure ratio (P_4 / P_1)
 P4_over_P1 = P_4 / P_1;
+<<<<<<< Updated upstream
 % Burner pressure ratio
+=======
+>>>>>>> Stashed changes
 Pb_over_P2 = P_b / P_2;
 
 F = 20000;      % Required thrust                       [N]
@@ -80,8 +83,11 @@ plot(T_1_range,eta_T1prop)
 plot(T_1_range,eta_T1thermo)
 plot(T_1_range,eta_T1total)
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside")
+<<<<<<< Updated upstream
 ylabel("$\eta$")
 xlabel("$T_1$ / K")
+=======
+>>>>>>> Stashed changes
 hold off
 betterPlot(VaryT1)
 %% Varying M_1 (Flight Mach number)
@@ -147,12 +153,21 @@ VaryPbP2prop = figure;
 
 betterPlot(VaryPbP2prop)
 %% Varying P_4/P_1 (Exhaust pressure ratio)
+<<<<<<< Updated upstream
 P4_over_P1 = linspace(0.2,10,500); %From under expanded to over expanded
 var P_4
 
 % Calculate efficiencies for each expansion
 for i = 1:length(P4_over_P1)
     [eta_Fprop(i), eta_Fthermo(i), eta_Ftotal(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1(i));
+=======
+%P4_over_P1 = linspace(0.2,10,500); %From under expanded to over expanded
+P4_over_P1_range = linspace(0.97,1.05,500);
+
+% Calculate efficiencies for each expansion
+for i = 1:length(P4_over_P1_range)
+    [eta_Fprop(i), eta_Fthermo(i), eta_Ftotal(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1_range(i));
+>>>>>>> Stashed changes
 end
 
 % Varying thermodynamic efficiency
@@ -169,6 +184,10 @@ ylabel('$\eta $');
 title('Efficiency vs P4/P1');
 legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
 grid on;
+<<<<<<< Updated upstream
+=======
+ylim([0, 1]);
+>>>>>>> Stashed changes
 
 % Apply betterPlot style (if necessary)
 betterPlot(VaryP4P1thermo); % Applies the betterPlot style to the current figure
