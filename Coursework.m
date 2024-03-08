@@ -172,17 +172,32 @@ VaryTbprop = figure;
 
 betterPlot(VaryTbprop)
 %% Varying P_b/P_2 (Burner pressure ratio)
+Pb_over_P2_range = linspace(0.8,1.5,500); %From under expanded to over expanded
+
+% Calculate efficiencies for each expansion
+for i = 1:length(Pb_over_P2_range)
+    [eta_Fprop(i), eta_Fthermo(i), eta_Ftotal(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2_range(i),P4_over_P1);
+end
+
 % Varying thermodynamic efficiency
 VaryPbP2thermo = figure;
+plot(Pb_over_P2_range, eta_Fthermo, 'LineWidth', 2, 'DisplayName', 'Thermodynamic Efficiency');
+hold on;
+plot(Pb_over_P2_range, eta_Fprop, 'LineWidth', 2, 'DisplayName', 'Propulsive Efficiency');
+plot(Pb_over_P2_range, eta_Ftotal, 'LineWidth', 2, 'DisplayName', 'Total Efficiency');
+hold off;
 
-betterPlot(VaryPbP2thermo)
-% Varying propulsive efficiency
-VaryPbP2prop = figure;
+% Set labels and title
+xlabel('Pb/P2');
+ylabel('$\eta $');
+title('Efficiency vs Pb/P2');
+legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
+grid on;
 
-betterPlot(VaryPbP2prop)
+% Apply betterPlot style (if necessary)
+betterPlot(VaryPbP2thermo); % Applies the betterPlot style to the current figure
 %% Varying P_4/P_1 (Exhaust pressure ratio)
-%P4_over_P1_range = linspace(0.2,10,500); %From under expanded to over expanded
-P4_over_P1_range = linspace(0.97,1.05,500);
+P4_over_P1_range = linspace(0.8,1.5,500); %From under expanded to over expanded
 
 % Calculate efficiencies for each expansion
 for i = 1:length(P4_over_P1_range)
@@ -203,7 +218,6 @@ ylabel('$\eta $');
 title('Efficiency vs P4/P1');
 legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
 grid on;
-ylim([0, 1]);
 
 % Apply betterPlot style (if necessary)
 betterPlot(VaryP4P1thermo); % Applies the betterPlot style to the current figure
