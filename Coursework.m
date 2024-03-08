@@ -51,9 +51,9 @@ end
 
 VaryP1 = figure;
 hold on
-plot(P_1_range,eta_P1prop)
-plot(P_1_range,eta_P1thermo)
-plot(P_1_range,eta_P1total)
+plot(P_1_range,eta_P1prop, 'LineWidth', 1)
+plot(P_1_range,eta_P1thermo, 'LineWidth', 1)
+plot(P_1_range,eta_P1total, 'LineWidth', 1)
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside")
 ylabel("$\eta$")
 xlabel("$P_1$ / Pa")
@@ -73,9 +73,9 @@ end
 
 VaryT1 = figure;
 hold on
-plot(T_1_range,eta_T1prop)
-plot(T_1_range,eta_T1thermo)
-plot(T_1_range,eta_T1total)
+plot(T_1_range,eta_T1prop, 'LineWidth', 1)
+plot(T_1_range,eta_T1thermo, 'LineWidth', 1)
+plot(T_1_range,eta_T1total, 'LineWidth', 1)
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside")
 ylabel("$\eta$")
 xlabel("$T_1$ / K")
@@ -94,11 +94,11 @@ end
 
 % Creating the figure for efficiency vs Flight Mach number
 VaryM1 = figure;
-plot(M_1_range,eta_prop)
+plot(M_1_range,eta_prop, 'LineWidth', 1)
 hold on
-plot(M_1_range,eta_thermo)
+plot(M_1_range,eta_thermo, 'LineWidth', 1)
 hold on
-plot(M_1_range,eta_total)
+plot(M_1_range,eta_total, 'LineWidth', 1)
 hold off
 xlabel("Flight Mach Number M$_{1}$")
 ylabel('Efficiencies ($\eta$)')
@@ -119,11 +119,11 @@ end
 
 % Creating the figure for efficiency vs Flight Mach number
 VaryMN = figure;
-plot(M_N_range,eta_prop)
+plot(M_N_range,eta_prop, 'LineWidth', 1)
 hold on
-plot(M_N_range,eta_thermo)
+plot(M_N_range,eta_thermo, 'LineWidth', 1)
 hold on
-plot(M_N_range,eta_total)
+plot(M_N_range,eta_total, 'LineWidth', 1)
 hold off
 xlabel("Normal Shock Strength M$_{N}$")
 ylabel('Efficiencies ($\eta$)')
@@ -148,9 +148,9 @@ end
 VaryMbthermo = figure; 
  
 hold on 
-plot(M_b_range,eta_Mbprop) 
-plot(M_b_range,eta_Mbthermo) 
-plot(M_b_range,eta_Mbtotal) 
+plot(M_b_range,eta_Mbprop, 'LineWidth', 1) 
+plot(M_b_range,eta_Mbthermo, 'LineWidth', 1) 
+plot(M_b_range,eta_Mbtotal, 'LineWidth', 1) 
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside") 
 ylabel("$\eta$") 
 xlabel("$M_b$ / K") 
@@ -181,10 +181,10 @@ end
 
 % Varying thermodynamic efficiency
 VaryPbP2thermo = figure;
-plot(Pb_over_P2_range, eta_Fthermo, 'LineWidth', 2, 'DisplayName', 'Thermodynamic Efficiency');
+plot(Pb_over_P2_range, eta_Fthermo, 'LineWidth', 1, 'DisplayName', 'Thermodynamic Efficiency');
 hold on;
-plot(Pb_over_P2_range, eta_Fprop, 'LineWidth', 2, 'DisplayName', 'Propulsive Efficiency');
-plot(Pb_over_P2_range, eta_Ftotal, 'LineWidth', 2, 'DisplayName', 'Total Efficiency');
+plot(Pb_over_P2_range, eta_Fprop, 'LineWidth', 1, 'DisplayName', 'Propulsive Efficiency');
+plot(Pb_over_P2_range, eta_Ftotal, 'LineWidth', 1, 'DisplayName', 'Total Efficiency');
 hold off;
 
 % Set labels and title
@@ -206,10 +206,10 @@ end
 
 % Varying thermodynamic efficiency
 VaryP4P1thermo = figure;
-plot(P4_over_P1_range, eta_Fthermo, 'LineWidth', 2, 'DisplayName', 'Thermodynamic Efficiency');
+plot(P4_over_P1_range, eta_Fthermo, 'LineWidth', 1, 'DisplayName', 'Thermodynamic Efficiency');
 hold on;
-plot(P4_over_P1_range, eta_Fprop, 'LineWidth', 2, 'DisplayName', 'Propulsive Efficiency');
-plot(P4_over_P1_range, eta_Ftotal, 'LineWidth', 2, 'DisplayName', 'Total Efficiency');
+plot(P4_over_P1_range, eta_Fprop, 'LineWidth', 1, 'DisplayName', 'Propulsive Efficiency');
+plot(P4_over_P1_range, eta_Ftotal, 'LineWidth', 1, 'DisplayName', 'Total Efficiency');
 hold off;
 
 % Set labels and title
@@ -231,10 +231,10 @@ end
 
 % Plot graphs
 VaryT = figure;
-plot(F, eta_Fthermo, 'LineWidth', 2, 'DisplayName', 'Thermodynamic Efficiency');
+plot(F, eta_Fthermo, 'LineWidth', 1, 'DisplayName', 'Thermodynamic Efficiency');
 hold on;
-plot(F, eta_Fprop, 'LineWidth', 2, 'DisplayName', 'Propulsive Efficiency');
-plot(F, eta_Ftotal, 'LineWidth', 2, 'DisplayName', 'Total Efficiency');
+plot(F, eta_Fprop, 'LineWidth', 1, 'DisplayName', 'Propulsive Efficiency');
+plot(F, eta_Ftotal, 'LineWidth', 1, 'DisplayName', 'Total Efficiency');
 hold off;
 
 % Set labels and title
