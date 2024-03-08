@@ -1,4 +1,4 @@
-function [eta_prop,eta_thermo,eta_total,A_1,A_C1,A_2,A_b,A_C2,A_4] = mainRamjet(P_1,T_1,M_1,M_N,M_b,T_b,P_2,P_b,P4_over_P1,F,gamma,M_2,R,f_fa,epsilon,C_p)
+function [eta_prop,eta_thermo,eta_total,checkError,A_1,A_C1,A_2,A_b,A_C2,A_4] = mainRamjet(P_1,T_1,M_1,M_N,M_b,T_b,P_2,P_b,P4_over_P1,F,gamma,M_2,R,f_fa,epsilon,C_p)
 % Function to calculate the main output parameters of a ramjet given
 % relevant input parameters
 % T_b,T_4,T_1,P_1,gamma,P_2,T_2,C_p,f_fa,epsilon
@@ -77,7 +77,13 @@ T_2 = T2_over_T1 * T_1;
 
 P02_over_P2 = M2P0ratio(M_2,gamma);
 
-M_b = 0.5 * ((T_2/T_b)^0.5) * (M_2 + 1/(gamma*M_2)) - (0.5 * ( (T_2/T_b) * ((M_2 + 1/(gamma*M_2)) ^ 2) - 4/gamma)^0.5) ;
+M_b = 0.5 * ((T_2/T_b)^0.5) * (M_2 + 1/(gamma*M_2)) - (0.5 * ( (T_2/T_b) * ((M_2 + 1/(gamma*M_2)) ^ 2) - 4/gamma)^0.5);
+
+if imag(M_b) ~= 0
+    checkError = "Imaginary Mach Number";
+    M_b = real(M_b);
+end
+
 
 %% Station b - End of burner (burn complete)
 %[M_b,~] = RaleighBurner(T_2,T_b,M_2,gamma);
