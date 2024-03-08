@@ -1,7 +1,7 @@
 function [eta_prop,eta_thermo,eta_total,A_1,A_C1,A_2,A_b,A_C2,A_4] = mainRamjet(P_1,T_1,M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R,f_fa,epsilon,C_p)
 % Function to calculate the main output parameters of a ramjet given
 % relevant input parameters
-%
+% T_b,T_4,T_1,P_1,gamma,P_2,T_2,C_p,f_fa,epsilon
 % Inputs:
 % P_1   = Freestream pressure                   [Pa]
 % T_1   = Freestream temperature                [K]
@@ -24,7 +24,6 @@ function [eta_prop,eta_thermo,eta_total,A_1,A_C1,A_2,A_b,A_C2,A_4] = mainRamjet(
 
 Pb_over_P2 = P_b / P_2;
 P4_over_P1 = P_4 / P_1;
-
 %% Station 1 - Freestream
 T01_over_T1 = M2T0ratio(M_1,gamma);
 T0x_over_T1 = T01_over_T1;
@@ -41,7 +40,7 @@ AC1_over_A1 = 1 / A1_over_AC1;
 %% Station x - Just before shock
 M_x = M_N;
 
-[M_y,Ty_over_Tx,Py_over_Px,rhoy_over_rhox] = normalShockRelations(M_N,gamma);
+[M_y,Ty_over_Tx,Py_over_Px,~] = normalShockRelations(M_N,gamma);
 
 T0x_over_Tx = M2T0ratio(M_N,gamma);
 
@@ -143,12 +142,10 @@ A_C2 = AC2_over_A1 * A_1;
 A_4 = A4_over_A1 * A_1;
 
 % Propulsive efficiency
-eta_prop = propEfficiency(gamma,R,M_1,M_4,A_1,A_4,T_1,T_4);
+eta_prop = propEfficiency(F_over_P1A1,gamma,R,M_1,M_4,T_1,T_4);
 
 % Thermodynamic efficiency
-comp_eff = compressorEff(P_1,P_2,gamma,T_1,T_2);
-exp_eff = expansionEff(T_b,T_4,P_1,P_2,gamma);
-eta_thermo = cycleEfficiency(T_1,T_2,f_fa,epsilon,comp_eff,exp_eff,C_p);
+eta_thermo = cycleEfficiency(T_1,T_2,T_b,T_4);
 
 % Total Efficiency
 eta_total = eta_thermo * eta_prop;

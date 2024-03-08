@@ -1,4 +1,4 @@
-function prop_eff = propEfficiency(gamma,R, M_1, M_4, A_1, A_4,T_1, T_4)
+function prop_eff = propEfficiency(F_over_P1A1,gamma,R,M_1, M_4,T_1,T_4)
 % Funtion to calculate the cycle efficiency using the compression
 % temperature ratio T1/T2
 %
@@ -15,10 +15,10 @@ function prop_eff = propEfficiency(gamma,R, M_1, M_4, A_1, A_4,T_1, T_4)
 % Outputs:
 % prop_eff = Propulsive efficiency of the engine
 
-U_1_squared = M_1^2*(gamma*R*T_1);
+U_1 = M_1 * sqrt(gamma * R * T_1);
 
-U_4_squared = M_4^2*(gamma*R*T_4);
+U_4 = M_4 * sqrt(gamma * R * T_4);
 
-prop_eff = (gamma*(M_1^2)*(((M_4^2)/(M_1^2)*(A_4/A_1))-1) - (A_4/A_1) -1)*((2*R*T_1)/(U_4_squared-U_1_squared));
+prop_eff = F_over_P1A1 * ((2 * R * T_1) / (U_4^2 - U_1^2));
 
 end
