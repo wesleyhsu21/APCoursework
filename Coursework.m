@@ -22,8 +22,8 @@ M_b = 0.42;     % Burner entry Mach number              []         % ASSIGNED SO
 T_b = 1700;     % Burner temperature                    [K]
 P_2 = 150000;   % Pressure just before burner entrance  [Pa]
 P_b = P_2;      % Burner pressure                       [Pa]
-% Burner pressure ratio (P_b / P_2)
-Pb_over_P2 = P_b / P_2; %SHOULD THIS BE 1??
+% % Burner pressure ratio (P_b / P_2)
+% Pb_over_P2 = P_b / P_2; %SHOULD THIS BE 1??
 
 P_4 = P_1;   % Exhaust pressure                      [Pa]       % CHECK
 % Exhaust pressure ratio (P_4 / P_1)
@@ -65,7 +65,7 @@ eta_T1total = zeros(1,200);
 checkError = zeros(1,200);
 
 for i = 1:200
-    [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i),checkError(i)] = mainRamjet(P_1,T_1_range(i),M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R,f_fa,epsilon,C_p);
+    [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i),checkError(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1_range(i),T_b);
 end
 
 VaryT1 = figure;
