@@ -133,7 +133,7 @@ betterPlot(VaryMN)
 %% Varying M_2 (Burner entry Mach number)
 % Varying Burner Mach number
  
-M_2_range = linspace(0,1.5,200); 
+M_2_range = linspace(0,0.25,200); 
 eta_M2thermo = zeros(1,200); 
 eta_M2prop = zeros(1,200); 
 eta_M2total = zeros(1,200); 
