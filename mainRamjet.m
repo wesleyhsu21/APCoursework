@@ -1,7 +1,7 @@
 function [eta_prop,eta_thermo,eta_total,checkError,A_1,A_C1,A_2,A_b,A_C2,A_4] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1)
 % Function to calculate the main output parameters of a ramjet given
 % relevant input parameters
-% T_b,T_4,T_1,P_1,gamma,P_2,T_2,C_p,f_fa,epsilon
+%
 % Inputs:
 % F             = Required Thrust                       [N]
 % gamma         = Ratio of specific heats               []
@@ -12,6 +12,8 @@ function [eta_prop,eta_thermo,eta_total,checkError,A_1,A_C1,A_2,A_b,A_C2,A_4] = 
 % R             = Ideal gas constant                    [J/(KgK)]
 % T_1           = Atmospheric temperature               [K]
 % T_b           = Temperature at the end of burner      [K]
+% Pb_over_P2    = Ratio P_b / P_2                       []
+% P4_over_P1    = Ratio P_4 / P_1                       []
 %
 % Outputs:
 % eta_prop      = Propulsive efficiency                 []

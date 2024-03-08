@@ -51,7 +51,7 @@ eta_P1prop = zeros(1,200);
 eta_P1total = zeros(1,200);
 
 for i = 1:200
-    [eta_P1prop(i),eta_P1thermo(i),eta_P1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1_range(i),R,T_1,T_b);
+    [eta_P1prop(i),eta_P1thermo(i),eta_P1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1_range(i),R,T_1,T_b,1,1);
 end
 
 VaryP1 = figure;
