@@ -133,24 +133,23 @@ legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northe
 % Better Plot
 betterPlot(VaryMN)
 %% Varying M_b (Burner entry Mach number)
-% Varying thermodynamic efficiency
-
+% Varying Burner Mach number
  
 M_b_range = linspace(0.1,0.9,200); 
-eta_Mbthermo = zeros(1,200); 
-eta_Mbprop = zeros(1,200); 
-eta_Mbtotal = zeros(1,200); 
+eta_Tbthermo = zeros(1,200); 
+eta_Tbprop = zeros(1,200); 
+eta_Tbtotal = zeros(1,200); 
  
 for i = 1:200 
-    [eta_Mbthermo(i),eta_Mbprop(i),eta_Mbtotal(i)] = mainRamjet(F,gamma,M_1,M_b_range(i),M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1); 
+    [eta_Tbthermo(i),eta_Tbprop(i),eta_Tbtotal(i)] = mainRamjet(F,gamma,M_1,M_b_range(i),M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1); 
 end 
  
 VaryMbthermo = figure; 
  
 hold on 
-plot(M_b_range,eta_Mbprop, 'LineWidth', 1) 
-plot(M_b_range,eta_Mbthermo, 'LineWidth', 1) 
-plot(M_b_range,eta_Mbtotal, 'LineWidth', 1) 
+plot(M_b_range,eta_Tbprop) 
+plot(M_b_range,eta_Tbthermo) 
+plot(M_b_range,eta_Tbtotal) 
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside") 
 ylabel("$\eta$") 
 xlabel("$M_b$ / K") 
@@ -159,18 +158,29 @@ hold off
 
 betterPlot(VaryMbthermo)
 %% Varying T_b (Burner temperature)
-
-%T_b range
-%T_b_range = linspace(T_1,)
-
-% Varying thermodynamic efficiency
-VaryTbthermo = figure;
+%varying burner temperature
+T_b_range = linspace(0.1,0.9,200); 
+eta_Tbthermo = zeros(1,200); 
+eta_Tbprop = zeros(1,200); 
+eta_Tbtotal = zeros(1,200); 
+ 
+for i = 1:200 
+    [eta_Tbthermo(i),eta_Tbprop(i),eta_Tbtotal(i)] = mainRamjet(F,gamma,M_1,M_b,M_N,P_1,R,T_1,T_b_range(i),Pb_over_P2,P4_over_P1); 
+end 
+ 
+VaryTbthermo = figure; 
+ 
+hold on 
+plot(M_b_range,eta_Tbprop) 
+plot(M_b_range,eta_Tbthermo) 
+plot(M_b_range,eta_Tbtotal) 
+legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside") 
+ylabel("$\eta$") 
+xlabel("$T_b$ / K") 
+hold off 
+ 
 
 betterPlot(VaryTbthermo)
-% Varying propulsive efficiency
-VaryTbprop = figure;
-
-betterPlot(VaryTbprop)
 %% Varying P_b/P_2 (Burner pressure ratio)
 Pb_over_P2_range = linspace(0.8,1.5,500); %From under expanded to over expanded
 
