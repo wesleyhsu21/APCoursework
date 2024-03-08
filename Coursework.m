@@ -114,7 +114,7 @@ M_N_range = linspace(0,6,500);
 
 % Using for loop to ittereate throuhg 
 for i = [1:length(M_N_range)]
-    [eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N_range,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1);
+    [eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N_range(i),P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1);
 end
 
 % Creating the figure for efficiency vs Flight Mach number
@@ -127,6 +127,7 @@ plot(M_N_range,eta_total)
 hold off
 xlabel("Normal Shock Strength M$_{N}$")
 ylabel('Efficiencies ($\eta$)')
+ylim([0 2])
 legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
 
 % Better Plot
