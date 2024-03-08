@@ -51,13 +51,14 @@ P_2 = 150000;   % Pressure just before burner entrance  [Pa]
 P_b = P_2;      % Burner pressure                       [Pa]
 F = 20000;      % Required thrust                       [N]
 
-P_1 = linspace(50000,100000,200);
+P_1 = linspace(0,100000,200);
 eta_P1thermo = zeros(1,200);
 eta_P1prop = zeros(1,200);
 eta_P1total = zeros(1,200);
 
+
 for i = 1:200
-    [eta_P1prop(i),eta_P1thermo(i),eta_P1total(i)] = mainRamjet(P_1(i),T_1,M_1,M_N,M_b,T_b,P_2,P_b,F,gamma,M_2,R,f_fa,epsilon,C_p);
+    [eta_P1prop(i),eta_P1thermo(i),eta_P1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1(i),R,T_1,T_b);
 end
 VaryP1 = figure;
 hold on
@@ -83,9 +84,10 @@ T_1 = linspace(200,350,200);
 eta_T1thermo = zeros(1,200);
 eta_T1prop = zeros(1,200);
 eta_T1total = zeros(1,200);
+checkError = zeros(1,200);
 
 for i = 1:200
-    [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i)] = mainRamjet(P_1,T_1(i),M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R,f_fa,epsilon,C_p);
+    [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i),checkError(i)] = mainRamjet(P_1,T_1(i),M_1,M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R,f_fa,epsilon,C_p);
 end
 
 VaryT1 = figure;

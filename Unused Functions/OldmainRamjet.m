@@ -1,4 +1,4 @@
-function [eta_prop,eta_thermo,eta_total,checkError,A_1,A_C1,A_2,A_b,A_C2,A_4] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1,T_b)
+function [eta_prop,eta_thermo,eta_total,checkError,A_1,A_C1,A_2,A_b,A_C2,A_4] = mainRamjet(P_1,T_1,M_1,M_N,M_b,T_b,P_2,P_b,P4_over_P1,F,gamma,M_2,R,f_fa,epsilon,C_p)
 % Function to calculate the main output parameters of a ramjet given
 % relevant input parameters
 % T_b,T_4,T_1,P_1,gamma,P_2,T_2,C_p,f_fa,epsilon
@@ -21,6 +21,9 @@ function [eta_prop,eta_thermo,eta_total,checkError,A_1,A_C1,A_2,A_b,A_C2,A_4] = 
 % A_4   = Exhaust Area
 % eta_t = Thermodynamic Efficiency
 % eta_p = Propulsive Efficiency
+
+%Pb_over_P2 = 1;
+%P_4 = P4_over_P1*P_1;
 %% Station 1 - Freestream
 T01_over_T1 = M2T0ratio(M_1,gamma);
 T0x_over_T1 = T01_over_T1;
@@ -57,7 +60,7 @@ P0y_over_Py = M2P0ratio(M_y,gamma);
 
 P_2 = P_1 * (2 * gamma * M_x^2 - (gamma - 1) ) / (gamma + 1);
 
-P_b = P_2 * 1;%Pb_over_P2;
+P_b = P_2 * Pb_over_P2;
 
 %% Station 2 - Beginning of burner
 A2_over_A2star = M2arearatio(M_2,gamma);
@@ -107,8 +110,6 @@ AC2_over_A1 = (1 / Ab_over_AC2) * Ab_over_A1;
 P04_over_P0b = 1;
 P02_over_P0y = 1;
 P0x_over_P01 = 1;
-Pb_over_P2 = 1;
-P4_over_P1 = 1;
 
 P04_over_P4 = P04_over_P0b * P0b_over_Pb * Pb_over_P2 * (1 / P02_over_P2) ...
     * P02_over_P0y * P0y_over_Py * Py_over_Px * (1 / P0x_over_Px)...
