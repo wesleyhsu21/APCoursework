@@ -134,13 +134,30 @@ legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northe
 betterPlot(VaryMN)
 %% Varying M_b (Burner entry Mach number)
 % Varying thermodynamic efficiency
-VaryMbthermo = figure;
+
+ 
+M_b_range = linspace(0.1,0.9,200); 
+eta_Mbthermo = zeros(1,200); 
+eta_Mbprop = zeros(1,200); 
+eta_Mbtotal = zeros(1,200); 
+ 
+for i = 1:200 
+    [eta_Mbthermo(i),eta_Mbprop(i),eta_Mbtotal(i)] = mainRamjet(F,gamma,M_1,M_b_range(i),M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1); 
+end 
+ 
+VaryMbthermo = figure; 
+ 
+hold on 
+plot(M_b_range,eta_Mbprop) 
+plot(M_b_range,eta_Mbthermo) 
+plot(M_b_range,eta_Mbtotal) 
+legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside") 
+ylabel("$\eta$") 
+xlabel("$M_b$ / K") 
+hold off 
+ 
 
 betterPlot(VaryMbthermo)
-% Varying propulsive efficiency
-VaryMbprop = figure;
-
-betterPlot(VaryMbprop)
 %% Varying T_b (Burner temperature)
 
 %T_b range
