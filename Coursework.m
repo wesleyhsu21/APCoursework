@@ -40,25 +40,13 @@ f_fa = 0.06641;
 C_p = 1.0045e3;
 
 %% Varying P_1 (Freestream pressure)
-
-% P_1 = 70000
-T_1 = 210;      % Freestream temperature                [K]
-M_1 = 2.8;      % Flight Mach number                    []
-M_N = 1.1;      % Normal shock strength                 []
-M_b = 0.42;     % Burner entry Mach number              []         % ASSIGNED SOMEWHERE ELSE??
-T_b = 1700;     % Burner temperature                    [K]
-P_2 = 150000;   % Pressure just before burner entrance  [Pa]
-P_b = P_2;      % Burner pressure                       [Pa]
-F = 20000;      % Required thrust                       [N]
-
-P_1 = linspace(0,100000,200);
+P_1_range = linspace(0,120000,200);
 eta_P1thermo = zeros(1,200);
 eta_P1prop = zeros(1,200);
 eta_P1total = zeros(1,200);
 
-
 for i = 1:200
-    [eta_P1prop(i),eta_P1thermo(i),eta_P1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1(i),R,T_1,T_b);
+    [eta_P1prop(i),eta_P1thermo(i),eta_P1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1_range(i),R,T_1,T_b);
 end
 VaryP1 = figure;
 hold on
@@ -67,6 +55,7 @@ plot(P_1,eta_P1thermo)
 plot(P_1,eta_P1total)
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside")
 hold off
+ylim([0 1])
 betterPlot(VaryP1)
 %% Varying T_1 (Freestream temperature)
 
