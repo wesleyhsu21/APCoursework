@@ -17,7 +17,7 @@ close all
 P_1 = 70000;    % Freestream pressure                   [Pa]
 T_1 = 210;      % Freestream temperature                [K]
 M_1 = 2.8;      % Flight Mach number                    []
-M_N = 1.1;      % Normal shock strength                 []
+M_N = 1.1;      % Normalc shock strength                 []
 M_b = 0.42;     % Burner entry Mach number              []         % ASSIGNED SOMEWHERE ELSE??
 T_b = 1700;     % Burner temperature                    [K]
 P_2 = 150000;   % Pressure just before burner entrance  [Pa]
@@ -93,7 +93,7 @@ M_1_range = linspace(1.5,6,500);
 
 % Using for loop to ittereate throuhg 
 for i = [1:length(M_1_range)]
-    [A_1,A_C1,A_2,A_b,A_C2,A_4,eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(P_1,T_1,M_1_range(i),M_N,M_b,T_b,P_2,P_b,P_4,F,gamma,M_2,R);
+    [A_1,A_C1,A_2,A_b,A_C2,A_4,eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(F,gamma,M_1_range(i),M_2,M_N,P_1,R,T_1,T_b);
 end
 
 % Creating the figure for efficiency vs Flight Mach number
