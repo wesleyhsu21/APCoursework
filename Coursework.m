@@ -160,13 +160,25 @@ betterPlot(VaryP4P1prop)
 %% Varying Thrust (Required Thrust)
 F = linspace(0,200e3,500); %thrust range for general ramjet engines
 
+% Calculate efficiencies for each thrust value
+for i = 1:length(F)
+    [eta_Fprop(i), eta_Fthermo(i), eta_Ftotal(i)] = mainRamjet(F(i),gamma,M_1,M_2,M_N,P_1,R,T_1,T_b);
+end
 
+% Plot graphs
+VaryT = figure;
+plot(F, eta_Fthermo, 'LineWidth', 2, 'DisplayName', 'Thermodynamic Efficiency');
+hold on;
+plot(F, eta_Fprop, 'LineWidth', 2, 'DisplayName', 'Propulsive Efficiency');
+plot(F, eta_Ftotal, 'LineWidth', 2, 'DisplayName', 'Total Efficiency');
+hold off;
 
-% Varying thermodynamic efficiency
-VaryTthermo = figure;
+% Set labels and title
+xlabel('Required Thrust (N)');
+ylabel('$\eta $');
+title('Efficiency vs Required Thrust');
+legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
+grid on;
 
-betterPlot(VaryTthermo)
-% Varying propulsive efficiency
-VaryTprop = figure;
-
-betterPlot(VaryTprop)
+% Apply betterPlot style (if necessary)
+betterPlot(gcf); % Applies the betterPlot style to the current figure
