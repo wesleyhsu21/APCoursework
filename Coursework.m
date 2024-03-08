@@ -169,8 +169,8 @@ end
 VaryTbthermo = figure; 
  
 hold on 
-plot(T_b_range,eta_Tbprop, 'LineWidth', 1) 
 plot(T_b_range,eta_Tbthermo, 'LineWidth', 1) 
+plot(T_b_range,eta_Tbprop, 'LineWidth', 1) 
 plot(T_b_range,eta_Tbtotal, 'LineWidth', 1) 
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside") 
 ylabel("$\eta$") 
