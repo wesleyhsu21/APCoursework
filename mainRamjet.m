@@ -60,7 +60,9 @@ T02_over_Ty = T0y_over_ty;
 
 P0y_over_Py = M2P0ratio(M_y,gamma);
 
-P_2 = P_1 * (2 * gamma * M_x^2 - (gamma - 1) ) / (gamma + 1);
+P_y = P_1 * (2 * gamma * M_x^2 - (gamma - 1) ) / (gamma + 1);
+
+P_2 = P_y * ( ((1 + (gamma - 1)*M_y^2)/2 )^(gamma/(gamma-1))  ) / ((1 +  ((gamma -1)/2)*M_2^2  )^(gamma/(gamma - 1)));
 
 P_b = P_2 * 1;%Pb_over_P2;
 
