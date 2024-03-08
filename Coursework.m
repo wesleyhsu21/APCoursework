@@ -133,22 +133,22 @@ betterPlot(VaryMN)
 %% Varying M_2 (Burner entry Mach number)
 % Varying Burner Mach number
  
-M_2_range = linspace(0.1,0.9,200); 
-eta_Tbthermo = zeros(1,200); 
-eta_Tbprop = zeros(1,200); 
-eta_Tbtotal = zeros(1,200); 
+M_2_range = linspace(0,1.5,200); 
+eta_M2thermo = zeros(1,200); 
+eta_M2prop = zeros(1,200); 
+eta_M2total = zeros(1,200); 
  
 for i = 1:200 
-    [eta_Tbthermo(i),eta_Tbprop(i),eta_Tbtotal(i)] = mainRamjet(F,gamma,M_1,M_2_range(i),M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1); 
+    [eta_M2thermo(i),eta_M2prop(i),eta_M2total(i)] = mainRamjet(F,gamma,M_1,M_2_range(i),M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1); 
 end 
  
 VaryMbthermo = figure; 
  
 hold on 
-plot(M_2_range,eta_Tbthermo, 'LineWidth', 1) 
-plot(M_2_range,eta_Tbprop, 'LineWidth', 1) 
-plot(M_2_range,eta_Tbtotal, 'LineWidth', 1) 
-legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside") 
+plot(M_2_range,eta_M2thermo, 'LineWidth', 1) 
+plot(M_2_range,eta_M2prop, 'LineWidth', 1) 
+plot(M_2_range,eta_M2total, 'LineWidth', 1) 
+legend("$\eta_{cycle}$","$\eta_{prop}$","$\eta_{total}$",Location="northeastoutside") 
 ylabel("$\eta$") 
 xlabel("$M_2$ / K") 
 hold off 
@@ -169,8 +169,8 @@ end
 VaryTbthermo = figure; 
  
 hold on 
-plot(T_b_range,eta_Tbprop, 'LineWidth', 1) 
 plot(T_b_range,eta_Tbthermo, 'LineWidth', 1) 
+plot(T_b_range,eta_Tbprop, 'LineWidth', 1) 
 plot(T_b_range,eta_Tbtotal, 'LineWidth', 1) 
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside") 
 ylabel("$\eta$") 
@@ -180,11 +180,11 @@ hold off
 
 betterPlot(VaryTbthermo)
 %% Varying P_b/P_2 (Burner pressure ratio)
-Pb_over_P2_range = linspace(0.8,1.5,500); %From under expanded to over expanded
+Pb_over_P2_range = linspace(0.5,1.5,500); %From under expanded to over expanded
 
 % Calculate efficiencies for each expansion
 for i = 1:length(Pb_over_P2_range)
-    [eta_Fprop(i), eta_Fthermo(i), eta_Ftotal(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2_range(i),P4_over_P1);
+    [eta_Fthermo(i),eta_Fprop(i), eta_Ftotal(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2_range(i),P4_over_P1);
 end
 
 % Varying thermodynamic efficiency
@@ -199,8 +199,8 @@ hold off;
 xlabel('$\frac{P_b}{P_2}$');
 ylabel('$\eta $');
 %title('Efficiency vs Pb/P2');
-legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
-xlim([0.8 1.5])
+legend('$\eta_{cycle}$','$\eta_{prop}$','$\eta_{total}$', location='northeastoutside')
+xlim([0.5 1.5])
 grid on;
 
 % Apply betterPlot style (if necessary)
@@ -210,7 +210,7 @@ P4_over_P1_range = linspace(0.8,1.5,500); %From under expanded to over expanded
 
 % Calculate efficiencies for each expansion
 for i = 1:length(P4_over_P1_range)
-    [eta_Fprop(i), eta_Fthermo(i), eta_Ftotal(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1_range(i));
+    [eta_Fthermo(i),eta_Fprop(i),eta_Ftotal(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1_range(i));
 end
 
 % Varying thermodynamic efficiency
@@ -225,7 +225,7 @@ hold off;
 xlabel('$\frac{P_4}{P_1}$');
 ylabel('$\eta $');
 %title('Efficiency vs P4/P1');
-legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
+legend('$\eta_{cycle}$','$\eta_{prop}$','$\eta_{total}$', location='northeastoutside')
 xlim([0.8 1.5])
 grid on;
 
@@ -236,7 +236,7 @@ F = linspace(0,200e3,500); %thrust range for general ramjet engines
 
 % Calculate efficiencies for each thrust value
 for i = 1:length(F)
-    [eta_Fprop(i), eta_Fthermo(i), eta_Ftotal(i)] = mainRamjet(F(i),gamma,M_1,M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1);
+    [eta_Fthermo(i),eta_Fprop(i),eta_Ftotal(i)] = mainRamjet(F(i),gamma,M_1,M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1);
 end
 
 % Plot graphs
@@ -251,7 +251,7 @@ hold off;
 xlabel('Required Thrust / N');
 ylabel('$\eta $');
 %title('Efficiency vs Required Thrust');
-legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
+legend('$\eta_{cycle}$','$\eta_{prop}$','$\eta_{total}$', location='northeastoutside')
 ylim([0 1])
 grid on;
 

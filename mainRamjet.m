@@ -139,7 +139,7 @@ F_over_P1A1 = gamma * M_1^2 * (M_4^2 / M_1^2 * A4_over_A1 - 1); % CHECK, APPROX
 
 %% Outputs
 % Inlet area
-A_1 = 1 / ( ((P_1 * gamma * M_1^2) / F) *( ((M_4/M_1) ^ 2) * A4_over_A1 -1 ) );
+A_1 = 1 / (((P_1 * gamma * M_1^2) / F) * (((M_4 / M_1) ^ 2) * A4_over_A1 - 1));
 
 % Inlet throat area
 A_C1 = AC1_over_A1 * A_1;
