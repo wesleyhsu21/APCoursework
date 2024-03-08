@@ -80,43 +80,33 @@ betterPlot(VaryT1)
 % Varying flight Mach Number
 
 % Defining range over which M_1 (flight Mach number) is varied
-M_1_range = linspace(1.5,6,500);
+M_1_range = linspace(0,8,500);
 
 % Using for loop to ittereate throuhg 
 for i = [1:length(M_1_range)]
-    [A_1,A_C1,A_2,A_b,A_C2,A_4,eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(F,gamma,M_1_range(i),M_2,M_N,P_1,R,T_1,T_b);
+    [eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(F,gamma,M_1_range(i),M_2,M_N,P_1,R,T_1,T_b);
 end
 
 % Creating the figure for efficiency vs Flight Mach number
-figure
+VaryM1 = figure;
 plot(M_1_range,eta_prop)
 hold on
 plot(M_1_range,eta_thermo)
 hold on
 plot(M_1_range,eta_total)
 hold off
-xlabel("Flight Mach number")
-ylabel('$\eta$')
+xlabel("Flight Mach Number M$_{1}$")
+ylabel('Efficiencies ($\eta$)')
 legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$', location='northeastoutside')
 
-
 % Better Plot
-VaryM1thermo = figure;
+betterPlot(VaryM1)
 
-betterPlot(VaryM1thermo)
-% Varying propulsive efficiency
-VaryM1prop = figure;
-
-betterPlot(VaryM1prop)
 %% Varying M_N (Normal Shock Strength)
-% Varying thermodynamic efficiency
+% Varying Normal Shock Strength
 VaryMNthermo = figure;
 
 betterPlot(VaryMNthermo)
-% Varying propulsive efficiency
-VaryMNprop = figure;
-
-betterPlot(VaryMNprop)
 %% Varying M_b (Burner entry Mach number)
 % Varying thermodynamic efficiency
 VaryMbthermo = figure;
