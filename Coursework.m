@@ -25,11 +25,11 @@ P_b = P_2;      % Burner pressure                       [Pa]
 % % Burner pressure ratio (P_b / P_2)
 % Pb_over_P2 = P_b / P_2; %SHOULD THIS BE 1??
 
-P_4 = P_1;   % Exhaust pressure                      [Pa]       % CHECK
+%P_4 = P_1;   % Exhaust pressure                      [Pa]       % CHECK
 % Exhaust pressure ratio (P_4 / P_1)
-P4_over_P1 = P_4 / P_1;
+%P4_over_P1 = P_4 / P_1;
 
-F = 20000;           % Required thrust                       [N]
+F = 20000;      % Required thrust                       [N]
 
 gamma = 1.4;    % Ratio of specific heats (Changes with T!)
 M_2 = 0.2;      % Mach number at start of burner section
@@ -50,9 +50,9 @@ for i = 1:200
 end
 VaryP1 = figure;
 hold on
-plot(P_1,eta_P1prop)
-plot(P_1,eta_P1thermo)
-plot(P_1,eta_P1total)
+plot(P_1_range,eta_P1prop)
+plot(P_1_range,eta_P1thermo)
+plot(P_1_range,eta_P1total)
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside")
 hold off
 ylim([0 1])
@@ -65,14 +65,16 @@ eta_T1total = zeros(1,200);
 checkError = zeros(1,200);
 
 for i = 1:200
-    [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i),checkError(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1_range(i),T_b);
+    [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1_range(i),T_b);
 end
 
 VaryT1 = figure;
-plot(P_1,eta_T1prop)
-plot(P_1,eta_T1thermo)
-plot(P_1,eta_T1total)
+hold on
+plot(T_1_range,eta_T1prop)
+plot(T_1_range,eta_T1thermo)
+plot(T_1_range,eta_T1total)
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",Location="northeastoutside")
+hold off
 betterPlot(VaryT1)
 %% Varying M_1 (Flight Mach number)
 % Varying flight Mach Number
