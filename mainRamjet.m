@@ -1,4 +1,4 @@
-function [eta_thermo,eta_prop,eta_total,checkError,A_1,A_C1,A_2,A_b,A_C2,A_4] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1)
+function [eta_thermo,eta_prop,eta_total,A_1,A_C1,A_2,A_b,A_C2,A_4] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1)
 % Function to calculate the main output parameters of a ramjet given
 % relevant input parameters
 %
@@ -19,13 +19,13 @@ function [eta_thermo,eta_prop,eta_total,checkError,A_1,A_C1,A_2,A_b,A_C2,A_4] = 
 % eta_prop      = Propulsive efficiency                 []
 % eta_thermo    = Thermodynamic efficiency              []
 % eta_total     = Total efficiency                      []
-% checkError    = String to check if M_b is imaginary   []
 % A_1           = Inlet area                            [m^2]
 % A_C1          = First nozzle throat area              [m^2]
 % A_2           = Area at the start of the burner       [m^2]
 % A_b           = Area at the end of the burner         [m^2]
 % A_C2          = Second nozzle throat area             [m^2]
 % A_4           = Exhaust nozzle area                   [m^2]
+
 %% Station 1 - Freestream
 T01_over_T1 = M2T0ratio(M_1,gamma);
 T0x_over_T1 = T01_over_T1;
@@ -56,7 +56,7 @@ As_over_Aystar = M2arearatio(M_y,gamma);
 
 T0y_over_ty = M2T0ratio(M_y,gamma);
 
-T02_over_Ty = T0y_over_ty;
+% T02_over_Ty = T0y_over_ty;
 
 P0y_over_Py = M2P0ratio(M_y,gamma);
 
@@ -83,12 +83,6 @@ P02_over_P2 = M2P0ratio(M_2,gamma);
 
 M_b = 0.5 * ((T_2/T_b)^0.5) * (M_2 + 1/(gamma*M_2)) - (0.5 * ( (T_2/T_b) * ((M_2 + 1/(gamma*M_2)) ^ 2) - 4/gamma)^0.5);
 
-if imag(M_b) ~= 0
-    checkError = "Imaginary Mach Number";
-    M_b = real(M_b);
-end
-
-
 %% Station b - End of burner (burn complete)
 % Needs to be subsonic or flow will choke, one other constraint, see eq
 % May need another plot, slide 40 Lecture 3.
@@ -99,7 +93,7 @@ Ab_over_A1 = Ab_over_A2 * A2_over_A1;
 
 %% Station C2 - Nozzle throat
 P0b_over_Pb = M2P0ratio(M_b,gamma);
-P0b_over_P2 = P0b_over_Pb;
+% P0b_over_P2 = P0b_over_Pb;
 
 T0b_over_Tb = M2T0ratio(M_b,gamma);
 
@@ -133,7 +127,7 @@ T04_over_T0b = 1;
 T4_over_Tb = T0b_over_Tb * T04_over_T0b * (1 / T04_over_T4);
 T_4 = T_b * T4_over_Tb;
 
-U_4 = M_4 * sqrt(gamma * R * T_4);
+% U_4 = M_4 * sqrt(gamma * R * T_4);
 
 F_over_P1A1 = gamma * M_1^2 * (M_4^2 / M_1^2 * A4_over_A1 - 1); % CHECK, APPROX
 

@@ -45,7 +45,7 @@ eta_P1thermo = zeros(1,200);
 eta_P1prop = zeros(1,200);
 eta_P1total = zeros(1,200);
 
-for i = 1:200
+for i = 1:length(P_1_range)
     [eta_P1thermo(i),eta_P1prop(i),eta_P1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1_range(i),R,T_1,T_b,Pb_over_P2,P4_over_P1);
 end
 
@@ -67,7 +67,7 @@ eta_T1thermo = zeros(1,500);
 eta_T1prop = zeros(1,500);
 eta_T1total = zeros(1,500);
 
-for i = 1:500
+for i = 1:length(T_1_range)
     [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1_range(i),T_b,Pb_over_P2,P4_over_P1);
 end
 
@@ -86,18 +86,21 @@ betterPlot(VaryT1)
 
 % Defining range over which M_1 (flight Mach number) is varied
 M_1_range = linspace(0,8,500);
+eta_M1thermo = zeros(1,500);
+eta_M1prop = zeros(1,500);
+eta_M1total = zeros(1,500);
 
 % Using for loop to ittereate throuhg 
-for i = [1:length(M_1_range)]
-    [eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(F,gamma,M_1_range(i),M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1);
+for i = 1:length(M_1_range)
+    [eta_M1thermo(i),eta_M1prop(i),eta_M1total(i)] = mainRamjet(F,gamma,M_1_range(i),M_2,M_N,P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1);
 end
 
 % Creating the figure for efficiency vs Flight Mach number
 VaryM1 = figure;
 hold on
-plot(M_1_range,eta_thermo, 'LineWidth', 1)
-plot(M_1_range,eta_prop, 'LineWidth', 1)
-plot(M_1_range,eta_total, 'LineWidth', 1)
+plot(M_1_range,eta_M1thermo, 'LineWidth', 1)
+plot(M_1_range,eta_M1prop, 'LineWidth', 1)
+plot(M_1_range,eta_M1total, 'LineWidth', 1)
 hold off
 xlabel("M$_{1}$")
 ylabel('$\eta$')
@@ -112,7 +115,7 @@ betterPlot(VaryM1)
 M_N_range = linspace(0,6,500);
 
 % Using for loop to ittereate throuhg 
-for i = [1:length(M_N_range)]
+for i = 1:length(M_N_range)
     [eta_thermo(i),eta_prop(i),eta_total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N_range(i),P_1,R,T_1,T_b,Pb_over_P2,P4_over_P1);
 end
 
@@ -181,6 +184,9 @@ hold off
 betterPlot(VaryTbthermo)
 %% Varying P_b/P_2 (Burner pressure ratio)
 Pb_over_P2_range = linspace(0.5,1.5,500); %From under expanded to over expanded
+eta_Fthermo = zeros(1,500);
+eta_Fprop = zeros(1,500);
+eta_Ftotal = zeros(1,500);
 
 % Calculate efficiencies for each expansion
 for i = 1:length(Pb_over_P2_range)
