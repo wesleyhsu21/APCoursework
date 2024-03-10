@@ -1,6 +1,5 @@
 function cycle_eff = cycleEfficiency(T_1,T_2,T_b,T_4)
-% Funtion to calculate the thermodynamic cycle efficiency using the compression
-% temperature ratio T1/T2
+% Funtion to calculate the thermodynamic cycle efficiency
 %
 % Inputs:
 % T_1       = Atmospheric Pressure

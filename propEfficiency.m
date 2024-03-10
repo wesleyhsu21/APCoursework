@@ -1,6 +1,5 @@
 function prop_eff = propEfficiency(F_over_P1A1,gamma,R,M_1,M_4,T_1,T_4)
-% Funtion to calculate the cycle efficiency using the compression
-% temperature ratio T1/T2
+% Funtion to calculate the cycle efficiency
 %
 % Inputs:
 % F_over_P1A1   = Relative thrust, i.e. F / (P_1 * A_1)
