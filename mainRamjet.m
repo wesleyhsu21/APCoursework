@@ -56,7 +56,7 @@ As_over_Aystar = M2arearatio(M_y,gamma);
 
 T0y_over_ty = M2T0ratio(M_y,gamma);
 
-% T02_over_Ty = T0y_over_ty;
+T02_over_Ty = T0y_over_ty;
 
 P0y_over_Py = M2P0ratio(M_y,gamma);
 
@@ -64,7 +64,7 @@ P_y = P_1 * (2 * gamma * M_x^2 - (gamma - 1) ) / (gamma + 1);
 
 P_2 = P_y * ( ((1 + (gamma - 1)*M_y^2)/2 )^(gamma/(gamma-1))  ) / ((1 +  ((gamma -1)/2)*M_2^2  )^(gamma/(gamma - 1)));
 
-P_b = P_2 * 1;%Pb_over_P2;
+P_b = P_2 * 1; % Pb_over_P2;
 
 %% Station 2 - Beginning of burner
 A2_over_A2star = M2arearatio(M_2,gamma);
@@ -103,14 +103,13 @@ Ab_over_AC2 = Ab_over_Abstar;
 AC2_over_A1 = (1 / Ab_over_AC2) * Ab_over_A1;
 
 %% Station 4 - Engine exhaust
-% CHECK THESE
 P04_over_P0b = 1;
 P02_over_P0y = 1;
 P0x_over_P01 = 1;
 
-P04_over_P4 = P04_over_P0b * P0b_over_Pb * Pb_over_P2 * (1 / P02_over_P2) ...
-    * P02_over_P0y * P0y_over_Py * Py_over_Px * (1 / P0x_over_Px)...
-    * P0x_over_P01 * P01_over_P1 * (1 ./ P4_over_P1);
+P04_over_P4 = P04_over_P0b * P0b_over_Pb * Pb_over_P2 * ...
+    (1 / P02_over_P2) * P02_over_P0y * P0y_over_Py * Py_over_Px...
+    * (1 / P0x_over_Px) * P0x_over_P01 * P01_over_P1 * (1 ./ P4_over_P1);
 
 M_4 = P0ratio2M(P04_over_P4,gamma);
 
@@ -127,9 +126,7 @@ T04_over_T0b = 1;
 T4_over_Tb = T0b_over_Tb * T04_over_T0b * (1 / T04_over_T4);
 T_4 = T_b * T4_over_Tb;
 
-% U_4 = M_4 * sqrt(gamma * R * T_4);
-
-F_over_P1A1 = gamma * M_1^2 * (M_4^2 / M_1^2 * A4_over_A1 - 1); % CHECK, APPROX
+F_over_P1A1 = gamma * M_1^2 * (M_4^2 / M_1^2 * A4_over_A1 - 1);
 
 %% Outputs
 % Inlet area
