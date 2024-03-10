@@ -77,9 +77,11 @@ A2_over_Aystar = A2_over_A2star;
 T02_over_T2 = M2T0ratio(M_2,gamma);
 T0y_over_T2 = T02_over_T2;
 
-A2_over_A1 = A2_over_Aystar * (1 / As_over_Aystar) * As_over_AC1 * AC1_over_A1;
+A2_over_A1 = A2_over_Aystar *...
+    (1 / As_over_Aystar) * As_over_AC1 * AC1_over_A1;
 
-T2_over_T1 = (1 / T0y_over_T2) * T0y_over_ty * Ty_over_Tx * (1 / T0x_over_Tx) * T0x_over_T1;
+T2_over_T1 = (1 / T0y_over_T2) * T0y_over_ty * Ty_over_Tx *...
+    (1 / T0x_over_Tx) * T0x_over_T1;
 
 T_2 = T2_over_T1 * T_1;
 
