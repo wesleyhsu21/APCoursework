@@ -96,8 +96,11 @@ M_b = 0.5 * ((T_2/T_b)^0.5) * (M_2 + 1/(gamma*M_2))...
     - (0.5 * ( (T_2/T_b) * ((M_2 + 1/(gamma*M_2)) ^ 2) - 4/gamma)^0.5);
 
 % Checking imaginary:
-check_M_b_imag = isimag(...
-    0.5 * ( (T_2/T_b) * ((M_2 + 1/(gamma*M_2)) ^ 2) - 4/gamma));
+if isreal(0.5 * ( (T_2/T_b) * ((M_2 + 1/(gamma*M_2)) ^ 2) - 4/gamma))
+    check_M_b_imag = 0;
+else
+    check_M_b_imag = 1;
+end
 
 %% Station b - End of burner (burn complete)
 % Needs to be subsonic or flow will choke, one other constraint, see eq

@@ -1,5 +1,5 @@
 function comp_eff = compressorEff(P_1,P_2,gamma,T_1,T_2)
-% Function to calculate compressor efficiency from the inlet and compression
+% Function to calculate compressor efficiency from inlet and compression
 % temperatures
 %
 % Inputs:

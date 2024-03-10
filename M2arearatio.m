@@ -9,5 +9,10 @@ function [arearatio] = M2arearatio(M,gamma)
 % Outputs:
 % arearatio = Area ratio for the given mach number
 
-lambda = (2 / (gamma + 1)) * (1 + (gamma - 1) / 2 * M^2);           % Lambda set to group a complicated term together
-arearatio = (1 / M) * lambda ^ ((gamma + 1) / (2 * (gamma - 1)));   % Equation for area ratio
+% Lambda set to group a complicated term together
+lambda = (2 / (gamma + 1)) * (1 + (gamma - 1) / 2 * M^2);
+
+% Equation for area ratio
+arearatio = (1 / M) * lambda ^ ((gamma + 1) / (2 * (gamma - 1)));
+
+end

@@ -24,6 +24,7 @@ M_b = 0.42;     % Burner entry Mach number                  []
 T_b = 1700;     % Burner temperature                        [K]
 P_2 = 150000;   % Pressure just before burner entrance      [Pa]
 P_b = P_2;      % Burner pressure                           [Pa]
+F = 20000;      % Required thrust                           [N]
 
 % Burner pressure ratio
 Pb_over_P2 = 1;%                                            []
@@ -31,19 +32,25 @@ Pb_over_P2 = 1;%                                            []
 % Exhaust pressure ratio (P_4 / P_1)
 P4_over_P1 = 1; %                                           []
 
-F = 20000;      % Required thrust                           [N]
-
 %% Chosen Variables
-% There values are chosen, and are typical of ramjets
-gamma = 1.4;    % Ratio of specific heats                   []
-M_2 = 0.26;     % Mach number at start of burner section    []
-R = 287;        %                                           [J/Kg K]
-
+% There values are chosen, and are typical of ramjets or are heavily
+% dependent on temberature and must be set to get an understandable result
+gamma = 1.4;        % Ratio of specific heats VARIES WITH T![]
+M_2 = 0.26;         % Mach number at start of burner section[]
+R = 287;            %                                       [J/Kg K]
 epsilon = 44786e3;  % Lower heating value                   [J/kg]
 f_fa = 0.06641;     % mdot_f/mdot_a                         []
 C_p = 1.0045e3;     % Specific heat at constant pressure    [J/Kg K]
 
-n = 1000;       % Discretisation
+%% Discretisation of range
+n = 1000;
+
+%% Saving to Folder 'Figures'
+folderName = 'Figures';
+if ~exist(folderName, 'dir')
+    mkdir(folderName);
+end
+
 %% Varying P_1 (Freestream pressure)
 P_1_range = linspace(0,120000,n);
 
@@ -77,6 +84,10 @@ ylim([0 1])
 xlim([0 120000])
 
 betterPlot(VaryP1) % Consistent style function
+
+% Saving figure
+saveas(VaryP1, fullfile(folderName, 'VaryP1.png'))
+
 %% Varying T_1 (Freestream temperature)
 T_1_range = linspace(0,1000,n);
 
@@ -87,7 +98,8 @@ eta_T1total = zeros(1,n);
 
 % Looping, Calculating efficiency for every i
 for i = 1:n
-    [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i)] = mainRamjet(F,gamma,M_1,M_2,M_N,P_1,R,T_1_range(i),T_b,Pb_over_P2,P4_over_P1);
+    [eta_T1thermo(i),eta_T1prop(i),eta_T1total(i)] = mainRamjet(F,gamma,...
+        M_1,M_2,M_N,P_1,R,T_1_range(i),T_b,Pb_over_P2,P4_over_P1);
 end
 
 % Plotting
@@ -107,6 +119,10 @@ xlabel("$T_1$ / K")
 hold off
 
 betterPlot(VaryT1) % Consistent style function
+
+% Saving figure
+saveas(VaryT1, fullfile(folderName, 'VaryT1.png'))
+
 %% Varying M_1 (Flight Mach number)
 M_1_range = linspace(0,8,n);
 
@@ -138,6 +154,10 @@ ylabel('$\eta$')
 hold off
 
 betterPlot(VaryM1) % Consistent style function
+
+% Saving figure
+saveas(VaryM1, fullfile(folderName, 'VaryM1.png'))
+
 %% Varying M_N (Normal Shock Strength)
 M_N_range = linspace(0,6,n);
 
@@ -170,6 +190,10 @@ hold off
 ylim([0 2])
 
 betterPlot(VaryMN) % Consistent style function
+
+% Saving figure
+saveas(VaryMN, fullfile(folderName, 'VaryMN.png'))
+
 %% Varying M_2 (Burner entry Mach number)
 M_2_range = linspace(0,0.5,n);
 
@@ -185,7 +209,7 @@ for i = 1:n
 end 
 
 % Plotting
-VaryMbthermo = figure; 
+VaryM2 = figure; 
 hold on
 plot(M_2_range,eta_M2thermo, 'LineWidth', 1) 
 plot(M_2_range,eta_M2prop, 'LineWidth', 1) 
@@ -201,7 +225,11 @@ xlabel("$M_2$ / K")
 hold off 
 xlim([0 0.5])
 
-betterPlot(VaryMbthermo) % Consistent style function
+betterPlot(VaryM2) % Consistent style function
+
+% Saving figure
+
+
 %% Varying T_b (Burner temperature)
 T_b_range = linspace(0,2200,n);
 
@@ -233,6 +261,10 @@ xlabel("$T_b$ / K")
 hold off 
 
 betterPlot(VaryTbthermo) % Consistent style function
+
+% Saving figure
+
+
 %% Varying P_b/P_2 (Burner pressure ratio)
 Pb_over_P2_range = linspace(0.5,1.5,n);
 
@@ -265,6 +297,10 @@ xlim([0.5 1.5])
 hold off;
 
 betterPlot(VaryPbP2thermo) % Consistent style function
+
+% Saving figure
+
+
 %% Varying P_4/P_1 (Exhaust pressure ratio)
 P4_over_P1_range = linspace(0.8,1.5,n);
 
@@ -297,6 +333,10 @@ xlim([0.8 1.5])
 hold off;
 
 betterPlot(VaryP4P1thermo) % Consistent style function
+
+% Saving figure
+
+
 %% Varying Thrust (Required Thrust)
 F = linspace(0,200000,n);
 
@@ -329,3 +369,6 @@ ylim([0 1])
 hold off;
 
 betterPlot(VaryT) % Consistent style function
+
+% Saving figure
+

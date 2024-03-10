@@ -20,7 +20,7 @@ U_1 = M_1 * sqrt(gamma * R * T_1);
 % Exhaust velocity
 U_4 = M_4 * sqrt(gamma * R * T_4);
 
-% Propulsion efficiency
+% Propulsive efficiency
 prop_eff = F_over_P1A1 * ((2 * R * T_1) / (U_4^2 - U_1^2));
 
 end

@@ -10,18 +10,18 @@ function [] = betterPlot(figure)
 % betterplot(f1)
 % legend off
 
-    set(0,'CurrentFigure',figure)    
-    ax = gca;
-    lgd = legend;
-    box on;
-    grid on;
-    grid minor;
-    ax.FontSize = 16;
-    ax.TickLabelInterpreter = "latex";
-    ax.XLabel.Interpreter = "latex";
-    ax.YLabel.Interpreter = "latex";
+set(0,'CurrentFigure',figure)
+ax = gca;
+lgd = legend;
+box on;
+grid on;
+grid minor;
+ax.FontSize = 16;
+ax.TickLabelInterpreter = "latex";
+ax.XLabel.Interpreter = "latex";
+ax.YLabel.Interpreter = "latex";
 
-    lgd.Interpreter = "latex";
-    lgd.FontSize = 13;
+lgd.Interpreter = "latex";
+lgd.FontSize = 13;
     
 end

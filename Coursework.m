@@ -45,7 +45,13 @@ C_p = 1.0045e3;     % Specific heat at constant pressure    [J/Kg K]
 %% Discretisation of range
 n = 1000;
 
-%% Varying P_1 (Freestream pressure)
+%% Saving to Folder 'Figures'
+folderName = 'Figures';
+if ~exist(folderName, 'dir')
+    mkdir(folderName);
+end
+
+%% 1. Varying P_1 (Freestream pressure)
 P_1_range = linspace(0,120000,n);
 
 % Initialising 
@@ -79,7 +85,10 @@ xlim([0 120000])
 
 betterPlot(VaryP1) % Consistent style function
 
-%% Varying T_1 (Freestream temperature)
+% Saving figure
+saveas(VaryP1, fullfile(folderName, 'VaryP1.png'))
+
+%% 2. Varying T_1 (Freestream temperature)
 T_1_range = linspace(0,1000,n);
 
 % Initalising
@@ -111,7 +120,10 @@ hold off
 
 betterPlot(VaryT1) % Consistent style function
 
-%% Varying M_1 (Flight Mach number)
+% Saving figure
+saveas(VaryT1, fullfile(folderName, 'VaryT1.png'))
+
+%% 3. Varying M_1 (Flight Mach number)
 M_1_range = linspace(0,8,n);
 
 % Initialising
@@ -143,7 +155,10 @@ hold off
 
 betterPlot(VaryM1) % Consistent style function
 
-%% Varying M_N (Normal Shock Strength)
+% Saving figure
+saveas(VaryM1, fullfile(folderName, 'VaryM1.png'))
+
+%% 4. Varying M_N (Normal Shock Strength)
 M_N_range = linspace(0,6,n);
 
 % Initialising
@@ -176,7 +191,10 @@ ylim([0 2])
 
 betterPlot(VaryMN) % Consistent style function
 
-%% Varying M_2 (Burner entry Mach number)
+% Saving figure
+saveas(VaryMN, fullfile(folderName, 'VaryMN.png'))
+
+%% 5. Varying M_2 (Burner entry Mach number)
 M_2_range = linspace(0,0.5,n);
 
 % Initialising
@@ -191,7 +209,7 @@ for i = 1:n
 end 
 
 % Plotting
-VaryMbthermo = figure; 
+VaryM2 = figure; 
 hold on
 plot(M_2_range,eta_M2thermo, 'LineWidth', 1) 
 plot(M_2_range,eta_M2prop, 'LineWidth', 1) 
@@ -207,9 +225,12 @@ xlabel("$M_2$ / K")
 hold off 
 xlim([0 0.5])
 
-betterPlot(VaryMbthermo) % Consistent style function
+betterPlot(VaryM2) % Consistent style function
 
-%% Varying T_b (Burner temperature)
+% Saving figure
+saveas(VaryM2, fullfile(folderName, 'VaryM2.png'))
+
+%% 6. Varying T_b (Burner temperature)
 T_b_range = linspace(0,2200,n);
 
 % Initalising
@@ -224,7 +245,7 @@ for i = 1:n
 end 
 
 % Plotting
-VaryTbthermo = figure; 
+VaryTb = figure; 
 hold on 
 plot(T_b_range,eta_Tbthermo, 'LineWidth', 1) 
 plot(T_b_range,eta_Tbprop, 'LineWidth', 1) 
@@ -239,9 +260,12 @@ ylabel("$\eta$")
 xlabel("$T_b$ / K") 
 hold off 
 
-betterPlot(VaryTbthermo) % Consistent style function
+betterPlot(VaryTb) % Consistent style function
 
-%% Varying P_b/P_2 (Burner pressure ratio)
+% Saving figure
+saveas(VaryTb, fullfile(folderName, 'VaryTb.png'))
+
+%% 7. Varying P_b/P_2 (Burner pressure ratio)
 Pb_over_P2_range = linspace(0.5,1.5,n);
 
 % Initialising
@@ -274,7 +298,10 @@ hold off;
 
 betterPlot(VaryPbP2thermo) % Consistent style function
 
-%% Varying P_4/P_1 (Exhaust pressure ratio)
+% Saving figure
+saveas(VaryPbP2thermo, fullfile(folderName, 'VaryPbP2.png'))
+
+%% 8. Varying P_4/P_1 (Exhaust pressure ratio)
 P4_over_P1_range = linspace(0.8,1.5,n);
 
 % Initialising
@@ -307,7 +334,10 @@ hold off;
 
 betterPlot(VaryP4P1thermo) % Consistent style function
 
-%% Varying Thrust (Required Thrust)
+% Saving figure
+saveas(VaryP4P1thermo, fullfile(folderName, 'VaryP4P1.png'))
+
+%% 9. Varying Thrust (Required Thrust)
 F = linspace(0,200000,n);
 
 % Initialising
@@ -339,3 +369,6 @@ ylim([0 1])
 hold off;
 
 betterPlot(VaryT) % Consistent style function
+
+% Saving figure
+saveas(VaryT, fullfile(folderName, 'VaryThrust.png'))
