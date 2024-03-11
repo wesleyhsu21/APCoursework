@@ -96,7 +96,7 @@ M_b = 0.5 * ((T_2/T_b)^0.5) * (M_2 + 1/(gamma*M_2))...
     - (0.5 * ( (T_2/T_b) * ((M_2 + 1/(gamma*M_2)) ^ 2) - 4/gamma)^0.5);
 
 % Checking imaginary:
-if isreal(0.5 * ( (T_2/T_b) * ((M_2 + 1/(gamma*M_2)) ^ 2) - 4/gamma))
+if isreal(0.5 * ( (T_2/T_b) * ((M_2 + 1/(gamma*M_2)) ^ 2) - 4/gamma)^0.5)
     check_M_b_imag = 0;
 else
     check_M_b_imag = 1;
