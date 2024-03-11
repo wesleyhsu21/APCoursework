@@ -68,7 +68,7 @@ P_y = P_1 * (2 * gamma * M_x^2 - (gamma - 1) ) / (gamma + 1);
 P_2 = P_y * ( ((1 + (gamma - 1)*M_y^2)/2 )^(gamma/(gamma-1))  ) /...
     ((1 +  ((gamma -1)/2)*M_2^2  )^(gamma/(gamma - 1)));
 
-P_b = P_2 * 1; % Pb_over_P2;
+P_b = P_2 * 1;
 
 %% Station 2 - Beginning of burner
 A2_over_A2star = M2arearatio(M_2,gamma);
@@ -112,7 +112,6 @@ Ab_over_A1 = Ab_over_A2 * A2_over_A1;
 
 %% Station C2 - Nozzle throat
 P0b_over_Pb = M2P0ratio(M_b,gamma);
-% P0b_over_P2 = P0b_over_Pb;
 
 T0b_over_Tb = M2T0ratio(M_b,gamma);
 
