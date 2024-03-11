@@ -109,8 +109,18 @@ plot(T_1_range,eta_T1prop, 'LineWidth', 1)
 plot(T_1_range,eta_T1thermo, 'LineWidth', 1)
 plot(T_1_range,eta_T1total, 'LineWidth', 1)
 
+% Plotting regions
+T1xregion1 = [670 1000 1000 670];
+T1yregion1 = [1.2 1.2 0 0];
+fill(T1xregion1, T1yregion1, 'red', 'FaceAlpha', 0.3)
+
+T1xregion2 = [0 211.211 211.211 0];
+T1yregion2 = [1.2 1.2 0 0];
+fill(T1xregion2, T1yregion2, 'green', 'FaceAlpha', 0.3)
+
 % Legend
 legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",...
+    "$T_2 > T_b$","Imaginary $M_b$",...
     Location="northeastoutside")
 
 % Axes
