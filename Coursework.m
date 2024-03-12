@@ -149,8 +149,8 @@ end
 % Plotting
 VaryM1 = figure;
 hold on
-plot(M_1_range,eta_M1thermo, 'LineWidth', 1)
 plot(M_1_range,eta_M1prop, 'LineWidth', 1)
+plot(M_1_range,eta_M1thermo, 'LineWidth', 1)
 plot(M_1_range,eta_M1total, 'LineWidth', 1)
 
 % Plotting regions
@@ -196,8 +196,8 @@ end
 % Plotting
 VaryMN = figure;
 hold on
-plot(M_N_range,eta_MNthermo, 'LineWidth', 1)
 plot(M_N_range,eta_MNprop, 'LineWidth', 1)
+plot(M_N_range,eta_MNthermo, 'LineWidth', 1)
 plot(M_N_range,eta_MNtotal, 'LineWidth', 1)
 
 % Plotting regions
