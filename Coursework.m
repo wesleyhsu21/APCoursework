@@ -153,13 +153,25 @@ plot(M_1_range,eta_M1thermo, 'LineWidth', 1)
 plot(M_1_range,eta_M1prop, 'LineWidth', 1)
 plot(M_1_range,eta_M1total, 'LineWidth', 1)
 
+% Plotting regions
+M1xregion1 = [0 2.83 2.83 0];
+M1yregion1 = [1.2 1.2 0 0];
+fill(M1xregion1, M1yregion1, 'green', 'FaceAlpha', 0.3)
+
+M1xregion2 = [5.99 8 8 5.99];
+M1yregion2 = [1.2 1.2 0 0];
+fill(M1xregion2, M1yregion2, 'red', 'FaceAlpha', 0.3)
+
 % Legend
-legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$',...
-    location='northeastoutside')
+legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$","Imaginary $M_b$",...
+    "$T_2 > T_b$",Location="northeastoutside")
 
 % Axes
 xlabel("M$_{1}$")
+xticks([0:1:8])
 ylabel('$\eta$')
+yticks([0: 0.1 : 1.2])
+ylim([0,1.2])
 hold off
 
 betterPlot(VaryM1) % Consistent style function
@@ -188,15 +200,27 @@ plot(M_N_range,eta_MNthermo, 'LineWidth', 1)
 plot(M_N_range,eta_MNprop, 'LineWidth', 1)
 plot(M_N_range,eta_MNtotal, 'LineWidth', 1)
 
+% Plotting regions
+MNxregion1 = [0 1 1 0];
+MNyregion1 = [1.2 1.2 0 0];
+fill(MNxregion1, MNyregion1, 'green', 'FaceAlpha', 0.3)
+
+MNxregion2 = [4.65 8 8 4.65];
+MNyregion2 = [1.2 1.2 0 0];
+fill(MNxregion2, MNyregion2, 'red', 'FaceAlpha', 0.3)
+
+
 % Legend
-legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$',...
-    location='northeastoutside')
+legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$","Subsonic Shock",...
+    "$\eta_{total}$ = 0",Location="northeastoutside")
 
 % Axes
 xlabel("M$_{N}$")
+xticks([0:1:8])
 ylabel('$\eta$')
+yticks([0:0.1:1.2])
+ylim([0,1.2])
 hold off
-ylim([0 2])
 
 betterPlot(VaryMN) % Consistent style function
 
