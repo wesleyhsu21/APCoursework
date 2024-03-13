@@ -254,8 +254,16 @@ plot(M_2_range,eta_M2thermo, 'LineWidth', 1)
 plot(M_2_range,eta_M2prop, 'LineWidth', 1) 
 plot(M_2_range,eta_M2total, 'LineWidth', 1) 
 
+%extracting non real solutions
+M_2_imag = M_2_range(imag(eta_M2prop)~= 0);
+
+% Plotting regions
+M2xregion1 = [M_2_imag(1) M_2_range(n) M_2_range(n) M_2_imag(1)];
+M2yregion1 = [0.8 0.8 0.4 0.4];
+fill(M2xregion1, M2yregion1, 'red', 'FaceAlpha', 0.3)
+
 % Legend
-legend("$\eta_{cycle}$","$\eta_{prop}$","$\eta_{total}$",...
+legend("$\eta_{cycle}$","$\eta_{prop}$","$\eta_{total}$","Imaginary $M_b$",...
     Location="northeastoutside")
 
 % Axes
@@ -283,6 +291,9 @@ for i = 1:n
         M_1,M_2,M_N,P_1,R,T_1,T_b_range(i),Pb_over_P2,P4_over_P1); 
 end 
 
+T_b_imag = T_b_range(imag(eta_Tbprop)~= 0);
+
+
 % Plotting
 VaryTb = figure; 
 hold on 
@@ -290,9 +301,17 @@ plot(T_b_range,eta_Tbthermo, 'LineWidth', 1)
 plot(T_b_range,eta_Tbprop, 'LineWidth', 1) 
 plot(T_b_range,eta_Tbtotal, 'LineWidth', 1) 
 
+% Plotting regions
+Tbxregion1 = [0 532.086 532.086 0];
+Tbyregion1 = [2 2 0 0];
+fill(Tbxregion1, Tbyregion1, 'red', 'FaceAlpha', 0.3)
+
+Tbxregion2 = [T_b_imag(2) T_b_range(n) T_b_range(n) T_b_imag(2)];
+Tbyregion2 = [2 2 0 0];
+fill(Tbxregion2, Tbyregion2, 'green', 'FaceAlpha', 0.3)
+
 % Legend
-legend("$\eta_{cycle}$","$\eta_{prop}$","$\eta_{total}$",...
-    Location="northeastoutside")
+legend("$\eta_{cycle}$","$\eta_{prop}$","$\eta_{total}$","$T_2 > T_b$","Imaginary $M_b$",Location="northeastoutside")
 
 % Axes
 ylabel("$\eta$") 
