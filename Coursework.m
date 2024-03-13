@@ -35,10 +35,16 @@ P4_over_P1 = 1; %                                           []
 %% Chosen Variables
 % There values are chosen, and are typical of ramjets or are heavily
 % dependent on temberature and must be set to get an understandable result
+% Made the assumption that exhast and air have the same composition (i.e.
+% same ratio of specific heats, gas constant)
 gamma = 1.4;        % Ratio of specific heats VARIES WITH T![]
-R = 287;            %                                       [J/Kg K]
+R = 287;            % Ideal gas constant for air            [J/Kg K]
+
+% Pure Octane used as fuel with epsilon constant
 epsilon = 44786e3;  % Lower heating value                   [J/kg]
 f_fa = 0.06641;     % mdot_f/mdot_a                         []
+
+%Cp is assumed to be constant
 C_p = 1.0045e3;     % Specific heat at constant pressure    [J/Kg K]
 
 %% Discretisation of range

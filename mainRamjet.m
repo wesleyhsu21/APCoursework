@@ -31,6 +31,8 @@ function...
 
 %% Station 1 - Freestream
 T01_over_T1 = M2T0ratio(M_1,gamma);
+
+% Assuming compression/ expansion is isentropic
 T0x_over_T1 = T01_over_T1;
 
 P01_over_P1 = M2P0ratio(M_1,gamma);
@@ -43,6 +45,8 @@ A1_over_AC1 = A1_over_A1star;
 AC1_over_A1 = 1 / A1_over_AC1;
 
 %% Station x - Just before shock
+% Shock is assumed to be after the inlet throat
+
 M_x = M_N;
 
 [M_y,Ty_over_Tx,Py_over_Px,~] = normalShockRelations(M_N,gamma);
@@ -59,6 +63,7 @@ As_over_Aystar = M2arearatio(M_y,gamma);
 
 T0y_over_Ty = M2T0ratio(M_y,gamma);
 
+% Assuming compression/ expansion is isentropic
 T02_over_Ty = T0y_over_Ty;
 
 P0y_over_Py = M2P0ratio(M_y,gamma);
@@ -71,6 +76,8 @@ P_2 = P_y * ( ((1 + (gamma - 1)*M_y^2)/2 )^(gamma/(gamma-1))  ) /...
 P_b = P_2 * 1;
 
 %% Station 2 - Beginning of burner
+% This is the only location where heat is assumed to be added/ removed  and
+% burner cups are assumed to be dragless
 A2_over_A2star = M2arearatio(M_2,gamma);
 A2_over_Aystar = A2_over_A2star;
 
@@ -85,6 +92,7 @@ T2_over_T1 = (1 / T0y_over_T2) * T0y_over_Ty * Ty_over_Tx *...
 
 T_2 = T2_over_T1 * T_1;
 
+% Assuming compression/ expansion is isentropic
 P02_over_P2 = M2P0ratio(M_2,gamma);
 
 % The following equation is derived from conservation of mass, momentum,
@@ -92,6 +100,8 @@ P02_over_P2 = M2P0ratio(M_2,gamma);
 % To find M_b, the subsonic root must be chosen.
 % When (0.5 * ( (T_2/T_b) * ((M_2 + 1/(gamma*M_2)) ^ 2) - 4/gamma)) is
 % negative, M_b becomes nonreal.
+
+% Fuel mass is ignored
 M_b = 0.5 * ((T_2/T_b)^0.5) * (M_2 + 1/(gamma*M_2))...
     - (0.5 * ( (T_2/T_b) * ((M_2 + 1/(gamma*M_2)) ^ 2) - 4/gamma)^0.5);
 
@@ -103,8 +113,8 @@ else
 end
 
 %% Station b - End of burner (burn complete)
-% Needs to be subsonic or flow will choke, one other constraint, see eq
-% May need another plot, slide 40 Lecture 3.
+% Needs to be subsonic or flow will choke, one other constraint
+% Assumed that fuel is fully combusted
 
 Ab_over_A2 = AbA2ratio(P_b,P_2,gamma,M_2,M_b);
 
@@ -121,6 +131,7 @@ Ab_over_AC2 = Ab_over_Abstar;
 AC2_over_A1 = (1 / Ab_over_AC2) * Ab_over_A1;
 
 %% Station 4 - Engine exhaust
+% Assumed that exhaust is perfectly expanded 
 P04_over_P0b = 1;
 P02_over_P0y = 1;
 P0x_over_P01 = 1;
