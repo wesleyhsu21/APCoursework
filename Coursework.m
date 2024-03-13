@@ -319,23 +319,34 @@ plot(Pb_over_P2_range, eta_PbP2thermo, 'LineWidth', 1);
 plot(Pb_over_P2_range, eta_PbP2prop, 'LineWidth', 1);
 plot(Pb_over_P2_range, eta_PbP2total, 'LineWidth', 1);
 
+% Plotting regions
+T1xregion1 = [1.25 1.5 1.5 1.25];
+T1yregion1 = [1.5 1.5 -0.2 -0.2];
+fill(T1xregion1, T1yregion1, 'red', 'FaceAlpha', 0.3)
+
+T1xregion2 = [0.5 0.54 0.54 0.5];
+T1yregion2 = [1.5 1.5 -0.2 -0.2];
+fill(T1xregion2, T1yregion2, 'green', 'FaceAlpha', 0.3)
+
 % Legend
 legend('$\eta_{cycle}$','$\eta_{prop}$','$\eta_{total}$',...
+    "$\eta_{prop} > 1$","$\eta_{prop} < 0$",...
     location='northeastoutside')
 
 % Axes
 xlabel('$\frac{P_b}{P_2}$');
 ylabel('$\eta $');
 xlim([0.5 1.5])
+ylim([-0.2 1.5])
 hold off;
 
 betterPlot(VaryPbP2thermo) % Consistent style function
 
 % Saving figure
-saveas(VaryPbP2thermo, fullfile(folderName, 'VaryPbP2.png'))
+saveas(VaryPbP2thermo, fullfile(folderName, 'VaryPbP2.png'));
 
 %% 8. Varying P_4/P_1 (Exhaust pressure ratio)
-P4_over_P1_range = linspace(0.8,1.5,n);
+P4_over_P1_range = linspace(0.7,2,n);
 
 % Initialising
 eta_P4P1thermo = zeros(1,n);
@@ -355,14 +366,24 @@ plot(P4_over_P1_range, eta_P4P1thermo, 'LineWidth', 1);
 plot(P4_over_P1_range, eta_P4P1prop, 'LineWidth', 1);
 plot(P4_over_P1_range, eta_P4P1total, 'LineWidth', 1);
 
+% Plotting regions
+T1xregion1 = [1.864 2 2 1.864];
+T1yregion1 = [1.5 1.5 -0.5 -0.5];
+fill(T1xregion1, T1yregion1, 'red', 'FaceAlpha', 0.3)
+
+T1xregion2 = [0.7 0.8 0.8 0.7];
+T1yregion2 = [1.5 1.5 -0.5 -0.5];
+fill(T1xregion2, T1yregion2, 'green', 'FaceAlpha', 0.3)
+
 % Legend
 legend('$\eta_{cycle}$','$\eta_{prop}$','$\eta_{total}$',...
+    "$\eta_{prop} < 0$","$\eta_{prop} > 1$",...
     location='northeastoutside')
 
 % Axes
 xlabel('$\frac{P_4}{P_1}$');
 ylabel('$\eta $');
-xlim([0.8 1.5])
+xlim([0.7 2])
 hold off;
 
 betterPlot(VaryP4P1thermo) % Consistent style function
