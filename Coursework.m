@@ -73,12 +73,12 @@ end
 % Plotting
 VaryP1 = figure;
 hold on
-plot(P_1_range,eta_P1prop, 'LineWidth', 1)
 plot(P_1_range,eta_P1thermo, 'LineWidth', 1)
+plot(P_1_range,eta_P1prop, 'LineWidth', 1)
 plot(P_1_range,eta_P1total, 'LineWidth', 1)
 
 % Legend
-legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",...
+legend("$\eta_{cycle}$","$\eta_{propulsive}$","$\eta_{total}$",...
     Location="northeastoutside")
 
 % Axes
@@ -110,8 +110,8 @@ end
 % Plotting
 VaryT1 = figure;
 hold on
-plot(T_1_range,eta_T1prop, 'LineWidth', 1)
 plot(T_1_range,eta_T1thermo, 'LineWidth', 1)
+plot(T_1_range,eta_T1prop, 'LineWidth', 1)
 plot(T_1_range,eta_T1total, 'LineWidth', 1)
 
 % Plotting regions
@@ -124,7 +124,7 @@ T1yregion2 = [1.2 1.2 0 0];
 fill(T1xregion2, T1yregion2, 'green', 'FaceAlpha', 0.3)
 
 % Legend
-legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$",...
+legend("$\eta_{cycle}$","$\eta_{propulsive}$","$\eta_{total}$",...
     "$T_2 > T_b$","Imaginary $M_b$",...
     Location="northeastoutside")
 
@@ -155,8 +155,8 @@ end
 % Plotting
 VaryM1 = figure;
 hold on
-plot(M_1_range,eta_M1prop, 'LineWidth', 1)
 plot(M_1_range,eta_M1thermo, 'LineWidth', 1)
+plot(M_1_range,eta_M1prop, 'LineWidth', 1)
 plot(M_1_range,eta_M1total, 'LineWidth', 1)
 
 % Plotting regions
@@ -169,7 +169,7 @@ M1yregion2 = [1.2 1.2 0 0];
 fill(M1xregion2, M1yregion2, 'red', 'FaceAlpha', 0.3)
 
 % Legend
-legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$","Imaginary $M_b$",...
+legend("$\eta_{cycle}$","$\eta_{propulsive}$","$\eta_{total}$","Imaginary $M_b$",...
     "$T_2 > T_b$",Location="northeastoutside")
 
 % Axes
@@ -202,8 +202,8 @@ end
 % Plotting
 VaryMN = figure;
 hold on
-plot(M_N_range,eta_MNprop, 'LineWidth', 1)
 plot(M_N_range,eta_MNthermo, 'LineWidth', 1)
+plot(M_N_range,eta_MNprop, 'LineWidth', 1)
 plot(M_N_range,eta_MNtotal, 'LineWidth', 1)
 
 % Plotting regions
@@ -217,7 +217,7 @@ fill(MNxregion2, MNyregion2, 'red', 'FaceAlpha', 0.3)
 
 
 % Legend
-legend("$\eta_{propulsive}$","$\eta_{cycle}$","$\eta_{total}$","Subsonic Shock",...
+legend("$\eta_{cycle}$","$\eta_{propulsive}$","$\eta_{total}$","Subsonic Shock",...
     "$\eta_{total}$ = 0",Location="northeastoutside")
 
 % Axes
