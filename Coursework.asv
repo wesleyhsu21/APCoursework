@@ -153,6 +153,7 @@ plot(M_1_range,eta_M1thermo, 'LineWidth', 1)
 plot(M_1_range,eta_M1prop, 'LineWidth', 1)
 plot(M_1_range,eta_M1total, 'LineWidth', 1)
 
+<<<<<<< Updated upstream
 % Setting y-limits
 ylim([0,1.2])
 
@@ -175,6 +176,15 @@ xticks([0:1:8])
 ylabel('$\eta$')
 yticks([0:0.1:1.2])
 ylim([0:1.2])
+=======
+% Legend
+legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$',...
+    location='northeastoutside')
+
+% Axes
+xlabel("M$_{1}$")
+ylabel('$\eta$')
+>>>>>>> Stashed changes
 hold off
 
 betterPlot(VaryM1) % Consistent style function
@@ -203,6 +213,7 @@ plot(M_N_range,eta_MNthermo, 'LineWidth', 1)
 plot(M_N_range,eta_MNprop, 'LineWidth', 1)
 plot(M_N_range,eta_MNtotal, 'LineWidth', 1)
 
+<<<<<<< Updated upstream
 % Plotting regions
 MNxregion1 = [0 1 1 0];
 MNyregion1 = [1.2 1.2 0 0];
@@ -225,6 +236,17 @@ yticks([0:0.1:1.2])
 ylim([0:1.2])
 hold off
 
+=======
+% Legend
+legend('$\eta_{cycle}$','$\eta_{propulsion}$','$\eta_{total}$',...
+    location='northeastoutside')
+
+% Axes
+xlabel("M$_{N}$")
+ylabel('$\eta$')
+hold off
+ylim([0 2])
+>>>>>>> Stashed changes
 
 betterPlot(VaryMN) % Consistent style function
 
@@ -323,20 +345,43 @@ plot(Pb_over_P2_range, eta_PbP2thermo, 'LineWidth', 1);
 plot(Pb_over_P2_range, eta_PbP2prop, 'LineWidth', 1);
 plot(Pb_over_P2_range, eta_PbP2total, 'LineWidth', 1);
 
+<<<<<<< Updated upstream
 % Legend
 legend('$\eta_{cycle}$','$\eta_{prop}$','$\eta_{total}$',...
+=======
+% Plotting regions
+T1xregion1 = [1.25 1.5 1.5 1.25];
+T1yregion1 = [1.5 1.5 -0.2 -0.2];
+fill(T1xregion1, T1yregion1, 'red', 'FaceAlpha', 0.3)
+
+T1xregion2 = [0.5 0.54 0.54 0.5];
+T1yregion2 = [1.5 1.5 -0.2 -0.2];
+fill(T1xregion2, T1yregion2, 'green', 'FaceAlpha', 0.3)
+
+% Legend
+legend('$\eta_{cycle}$','$\eta_{prop}$','$\eta_{total}$',...
+    "$\eta$Negative efficiency","Efficiency > 1",...
+>>>>>>> Stashed changes
     location='northeastoutside')
 
 % Axes
 xlabel('$\frac{P_b}{P_2}$');
 ylabel('$\eta $');
 xlim([0.5 1.5])
+<<<<<<< Updated upstream
+=======
+ylim([-0.2 1.5])
+>>>>>>> Stashed changes
 hold off;
 
 betterPlot(VaryPbP2thermo) % Consistent style function
 
 % Saving figure
+<<<<<<< Updated upstream
 saveas(VaryPbP2thermo, fullfile(folderName, 'VaryPbP2.png'))
+=======
+saveas(VaryPbP2thermo, fullfile(folderName, 'VaryPbP2.png'));
+>>>>>>> Stashed changes
 
 %% 8. Varying P_4/P_1 (Exhaust pressure ratio)
 P4_over_P1_range = linspace(0.8,1.5,n);
